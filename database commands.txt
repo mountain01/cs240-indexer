@@ -1,0 +1,55 @@
+DROP TABLE IF EXIST user;
+DROP TABLE IF EXIST project;
+DROP TABLE IF EXIST batch;
+DROP TABLE IF EXIST record;
+DROP TABLE IF EXIST field;
+DROP TABLE IF EXIST value;
+
+CREATE TABLE  user (
+	userid INTEGER PRIMARY KEY AUTOINCREMENT,
+	firstname VARCHAR(255),
+	lastname VARCHAR(255),
+	username VARCHAR(255),
+	password VARCHAR(255),
+	recordcount INTEGER DEFAULT 0,
+	currbatch INTEGER,
+	email VARCHAR(255)
+);
+
+CREATE TABLE project (
+	projectid INTEGER PRIMARY KEY AUTOINCREMENT,
+	title VARCHAR(255),
+	recordsperimage INTEGER,
+	firstycoord INTEGER,
+	recordheight INTEGER
+);
+
+CREATE TABLE batch (
+	batchid INTEGER PRIMARY KEY AUTOINCREMENT,
+	projectid INTEGER,
+	imagefilepath VARCHAR(255),
+	complete BOOLEAN DEFAULT FALSE
+)
+
+CREATE TABLE record (
+	recordid INTEGER PRIMARY KEY AUTOINCREMENT,
+	batchid INTEGER	
+)
+
+CREATE TABLE field (
+	fieldid INTEGER PRIMARY KEY AUTOINCREMENT,
+	batchid INTEGER,
+	title VARCHAR(255),
+    xcoord INTEGER,
+    width INTEGER,
+    helphtml VARCHAR(255),
+    knowndatahtml VARCHAR(255)
+    colid INTEGER
+)
+
+CREATE TABLE value (
+	valueid INTEGER PRIMARY KEY AUTOINCREMENT,
+	name VARCHAR(255),
+	recordid INTEGER,
+	fieldid INTEGER
+)

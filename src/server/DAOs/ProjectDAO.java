@@ -85,4 +85,18 @@ public class ProjectDAO {
         }
 
     };
+
+    public void deleteProject(Project myBatch){
+        String query = "DELETE FROM project WHERE projectid = ?";
+        Connection con = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+
+            statement.setInt(1,myBatch.getProjectid());
+
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

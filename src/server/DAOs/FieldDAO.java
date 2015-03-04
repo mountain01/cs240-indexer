@@ -76,7 +76,7 @@ public class FieldDAO {
      * @param myField
      */
     public void updateField(Field myField){
-        String query = "UPDATE field SET batchid=?,colid=?,helphtml=?,knowndatahtml=?,width=?,title=?,xcoord=? WHERE batchid=?";
+        String query = "UPDATE field SET batchid=?,colid=?,helphtml=?,knowndatahtml=?,width=?,title=?,xcoord=? WHERE fieldid=?";
         Connection con = null;
         try {
             PreparedStatement statement = con.prepareStatement(query);
@@ -94,4 +94,19 @@ public class FieldDAO {
             e.printStackTrace();
         }
     };
+
+
+    public void deleteField(Field myBatch){
+        String query = "DELETE FROM field WHERE fieldid = ?";
+        Connection con = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+
+            statement.setInt(1,myBatch.getFieldid());
+
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

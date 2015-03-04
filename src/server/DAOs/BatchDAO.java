@@ -83,4 +83,22 @@ public class BatchDAO {
             e.printStackTrace();
         }
     };
+
+    /**
+     *
+     * @param myBatch
+     */
+    public void deleteBatch(Batch myBatch){
+        String query = "DELETE FROM batch WHERE batchid = ?";
+        Connection con = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+
+            statement.setInt(1,myBatch.getBatchid());
+
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -77,4 +77,18 @@ public class RecordDAO {
             e.printStackTrace();
         }
     };
+
+    public void deleteRecord(Record myBatch){
+        String query = "DELETE FROM record WHERE recordid = ?";
+        Connection con = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+
+            statement.setInt(1,myBatch.getRecordid());
+
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

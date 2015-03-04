@@ -95,4 +95,17 @@ public class UserDAO {
             e.printStackTrace();
         }
     };
+    public void deleteUser(User myBatch){
+        String query = "DELETE FROM user WHERE userid = ?";
+        Connection con = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+
+            statement.setInt(1,myBatch.getUserid());
+
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

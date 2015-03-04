@@ -90,4 +90,19 @@ public class ValueDAO {
             e.printStackTrace();
         }
     };
+
+
+    public void deleteValue(Value myBatch){
+        String query = "DELETE FROM value WHERE valueid = ?";
+        Connection con = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+
+            statement.setInt(1,myBatch.getValueid());
+
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

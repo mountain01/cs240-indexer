@@ -15,6 +15,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,6 +49,29 @@ public class Importer {
         }catch(IOException e){
             //e.printStackTrace();
         }catch(ParserConfigurationException e){
+            //e.printStackTrace();
+        }
+    }
+
+    private void copyFiles(File file,String parentFile){
+        if(file.isDirectory()){
+            for(File child : file.listFiles()){
+                if(!file.getPath().equals(parentFile))
+                    new File("Server/data/" + file.getPath().substring(parentFile.length())).mkdir();
+                copyFiles(child,parentFile);
+            }
+        }else{
+            File to = new File("Server/data/" + file.getPath().substring(parentFile.length()));
+            copyFile(to,file);
+        }
+    }
+
+    private void copyFile(File to, File from){
+        try{
+            if(to.exists())
+                to.delete();
+            Files.copy(from.toPath(), to.toPath());
+        }catch(IOException e){
             //e.printStackTrace();
         }
     }

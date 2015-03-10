@@ -1,12 +1,29 @@
 package server.Models;
 
+import java.util.List;
+
 /**
  * Created by Matt on 10/14/2014.
  */
 public class Batch {
     int batchid;
     int projectid;
+    int firstycoord;
+    int recordHeight;
+    int numRecords;
+    List<Field> fields;
     String imagefilepath;
+
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder(batchid+"\n"+projectid+"\n"+imagefilepath+"\n"+firstycoord
+                +"\n"+recordHeight+"\n"+numRecords+"\n"+fields.size()+"\n");
+        for(Field f:fields){
+            string.append(f.toString());
+        }
+        return string.toString();
+    }
+
     boolean complete;
 
     /**

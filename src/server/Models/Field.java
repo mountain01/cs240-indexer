@@ -29,6 +29,11 @@ public class Field {
         this.fieldid = fieldid;
     }
 
+    @Override
+    public String toString() {
+        return fieldid+"\n"+title+"\n"+helphtml+"\n"+xcoord+"\n"+width+"\n"+knowndatahtml+"\n";
+    }
+
     /**
      *
      * @return field title

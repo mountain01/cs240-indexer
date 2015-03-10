@@ -10,6 +10,13 @@ import java.util.ArrayList;
  * Created by Matt on 10/22/2014.
  */
 public class UserDAO {
+
+    private Database database;
+
+    public UserDAO(Database database) {
+        this.database = database;
+    }
+
     /**
      *
      * @return list of all Users

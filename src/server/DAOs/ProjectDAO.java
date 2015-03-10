@@ -10,6 +10,13 @@ import java.util.ArrayList;
  * Created by Matt on 10/22/2014.
  */
 public class ProjectDAO {
+
+    private Database database;
+
+    public ProjectDAO(Database database) {
+        this.database = database;
+    }
+
     /**
      *
      * @return List of Projects
@@ -41,7 +48,7 @@ public class ProjectDAO {
      *
      * @param newProject
      */
-    public void addProject(Project newProject){
+    public Project addProject(Project newProject){
         String query = "INSTERT INTO project (title,recordsperimage,recordheight,firstycoord) VALUES (?,?,?,?)";
         Connection con = null;
         try {
@@ -61,6 +68,7 @@ public class ProjectDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return newProject;
     };
 
     /**

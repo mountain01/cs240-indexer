@@ -10,6 +10,12 @@ import java.util.ArrayList;
  */
 public class ValueDAO {
 
+    private Database database;
+
+    public ValueDAO(Database database) {
+        this.database = database;
+    }
+
     /**
      *
      * @return list of all values
@@ -45,15 +51,14 @@ public class ValueDAO {
      *
      * @param newValue
      */
-    public void addValue(Value newValue){
+    public Value addValue(Value newValue){
         Connection con = null;
-        String query = "INSERT INTO value (valueid,recordid,name,fieldid) VALUES (?,?,?,?)";
+        String query = "INSERT INTO value (recordid,name,fieldid) VALUES (?,?,?)";
         try {
             PreparedStatement statement = con.prepareStatement(query);
-            statement.setInt(1,newValue.getValueid());
-            statement.setInt(2,newValue.getRecordid());
-            statement.setString(3,newValue.getName());
-            statement.setInt(4,newValue.getFieldid());
+            statement.setInt(1,newValue.getRecordid());
+            statement.setString(2,newValue.getName());
+            statement.setInt(3,newValue.getFieldid());
 
             if (statement.executeUpdate() == 1) {
                 Statement keyStmt = con.createStatement();
@@ -65,8 +70,7 @@ public class ValueDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
+        return newValue;
     };
 
     /**

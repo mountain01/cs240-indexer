@@ -33,12 +33,13 @@ CREATE TABLE batch (
 
 CREATE TABLE record (
 	recordid INTEGER PRIMARY KEY AUTOINCREMENT,
-	batchid INTEGER	
+	batchid INTEGER
+	colid INTEGER
 )
 
 CREATE TABLE field (
 	fieldid INTEGER PRIMARY KEY AUTOINCREMENT,
-	batchid INTEGER,
+	projectid INTEGER,
 	title VARCHAR(255),
     xcoord INTEGER,
     width INTEGER,

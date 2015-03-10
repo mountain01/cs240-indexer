@@ -10,6 +10,13 @@ import java.util.ArrayList;
  * Created by Matt on 10/22/2014.
  */
 public class FieldDAO {
+
+    private Database database;
+
+    public FieldDAO(Database database) {
+        this.database = database;
+    }
+
     /**
      *
      * @return list of all fields
@@ -24,7 +31,7 @@ public class FieldDAO {
             while(rs.next()){
                 Field f = new Field();
 
-                f.setBatchid(rs.getInt("batchid"));
+                f.setProjectid(rs.getInt("projectid"));
                 f.setColid(rs.getInt("colid"));
                 f.setFieldid(rs.getInt("fieldid"));
                 f.setHelphtml(rs.getString("helphtml"));
@@ -45,12 +52,12 @@ public class FieldDAO {
      *
      * @param newField
      */
-    public void addField(Field newField){
-        String query = "INSERT INTO field (batchid,colid,helphtml,knowndatahtml,width,title,xcoord) VALUES (?,?,?,?,?,?,?)";
+    public Field addField(Field newField){
+        String query = "INSERT INTO field (project,colid,helphtml,knowndatahtml,width,title,xcoord) VALUES (?,?,?,?,?,?,?)";
         Connection con = null;
         try {
             PreparedStatement statement = con.prepareStatement(query);
-             statement.setInt(1,newField.getBatchid());
+             statement.setInt(1,newField.getProjectid());
             statement.setInt(2,newField.getColid());
             statement.setString(3,newField.getHelphtml());
             statement.setString(4,newField.getKnowndatahtml());
@@ -69,6 +76,7 @@ public class FieldDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return newField;
     };
 
     /**
@@ -76,11 +84,11 @@ public class FieldDAO {
      * @param myField
      */
     public void updateField(Field myField){
-        String query = "UPDATE field SET batchid=?,colid=?,helphtml=?,knowndatahtml=?,width=?,title=?,xcoord=? WHERE fieldid=?";
+        String query = "UPDATE field SET projectid=?,colid=?,helphtml=?,knowndatahtml=?,width=?,title=?,xcoord=? WHERE fieldid=?";
         Connection con = null;
         try {
             PreparedStatement statement = con.prepareStatement(query);
-            statement.setInt(1,myField.getBatchid());
+            statement.setInt(1,myField.getProjectid());
             statement.setInt(2,myField.getColid());
             statement.setString(3,myField.getHelphtml());
             statement.setString(4,myField.getKnowndatahtml());

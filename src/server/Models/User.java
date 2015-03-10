@@ -13,11 +13,24 @@ public class User {
     int currbatch;
     String email;
 
+    public User() {
+
+    }
+
     /**
      * get user id from User@return user id
      */
     public int getUserid() {
         return userid;
+    }
+
+    public User(String firstname, String lastname, String username, String password, int recordcount, String email) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.username = username;
+        this.password = password;
+        this.recordcount = recordcount;
+        this.email = email;
     }
 
     /**

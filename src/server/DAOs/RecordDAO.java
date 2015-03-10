@@ -1,6 +1,8 @@
 package server.DAOs;
 
+import server.Models.Field;
 import server.Models.Record;
+import server.Models.Value;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,6 +11,13 @@ import java.util.ArrayList;
  * Created by Matt on 10/22/2014.
  */
 public class RecordDAO {
+
+    private Database database;
+
+    public RecordDAO(Database database) {
+        this.database = database;
+    }
+
     /**
      *
      * @return list of all records
@@ -39,13 +48,14 @@ public class RecordDAO {
      *
      * @param newRecord
      */
-    public void addRecord(Record newRecord){
-        String query = "INSERT INTO record (batchid) VALUES (?)";
+    public Record addRecord(Record newRecord){
+        String query = "INSERT INTO record (batchid,colid) VALUES (?,?)";
         Connection con = null;
         try {
             PreparedStatement statement = con.prepareStatement(query);
 
             statement.setInt(1,newRecord.getBatchid());
+            statement.setInt(2,newRecord.getColid());
 
             if (statement.executeUpdate() == 1) {
                 Statement keyStmt = con.createStatement();
@@ -57,6 +67,14 @@ public class RecordDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        for(Field field :newRecord.getValues().keySet()){
+            Value value = new Value();
+            value.setFieldid(field.getFieldid());
+            value.setRecordid(newRecord.getRecordid());
+            value.setName(newRecord.getValues().get(field));
+            database.getValueDAO().addValue(value);
+        }
+        return newRecord;
     };
 
     /**

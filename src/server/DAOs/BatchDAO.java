@@ -9,6 +9,13 @@ import java.util.ArrayList;
  * Created by Matt on 10/22/2014.
  */
 public class BatchDAO {
+
+    private Database database;
+
+    public BatchDAO(Database database) {
+        this.database = database;
+    }
+
     /**
      *
      * @return list of all batches
@@ -39,7 +46,7 @@ public class BatchDAO {
      *
      * @param newBatch
      */
-    public void addBatch (Batch newBatch){
+    public Batch addBatch(Batch newBatch){
         String query = "INSERT INTO batch (imagefilepath,complete,projectid) VALUES (?,?,?)";
         Connection con = null;
         try {
@@ -61,6 +68,7 @@ public class BatchDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return newBatch;
     };
 
     /**

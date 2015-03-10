@@ -5,7 +5,7 @@ package server.Models;
  */
 public class Field {
     int fieldid;
-    int batchid;
+    int projectid;
     String title;
     int xcoord;
     int width;
@@ -31,26 +31,26 @@ public class Field {
 
     /**
      *
-     * @return associated batch id
-     */
-    public int getBatchid() {
-        return batchid;
-    }
-
-    /**
-     * set field's associated batch id
-     * @param batchid
-     */
-    public void setBatchid(int batchid) {
-        this.batchid = batchid;
-    }
-
-    /**
-     *
      * @return field title
      */
     public String getTitle() {
         return title;
+    }
+
+    /**
+     *
+     * @return associated program id
+     */
+    public int getProjectid() {
+        return projectid;
+    }
+
+    /**
+     * set field's associated batch id
+     * @param projectid
+     */
+    public void setProjectid(int projectid) {
+        this.projectid = projectid;
     }
 
     /**

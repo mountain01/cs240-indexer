@@ -1,14 +1,35 @@
 package server.Models;
 
+import java.util.Map;
+
 /**
  * Created by Matt on 10/14/2014.
  */
 public class Record {
     int recordid;
     int batchid;
+    int colid;
+
+    public int getColid() {
+        return colid;
+    }
+
+    public void setColid(int colid) {
+        this.colid = colid;
+    }
+
+    public Map<Field, String> getValues() {
+        return values;
+    }
+
+    public void setValues(Map<Field, String> values) {
+        this.values = values;
+    }
+
+    Map<Field,String> values;
 
     /**
-     * g
+     *
      * @return associated record id
      */
     public int getRecordid() {

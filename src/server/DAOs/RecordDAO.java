@@ -68,6 +68,27 @@ public class RecordDAO {
         return result;
     }
 
+    public Record getRecordsByRecordId(int recordid){
+        Record r = null;
+        String query = "SELECT * FROM record WHERE recordid = ?";
+        Connection con = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setInt(1,recordid);
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                r = new Record();
+
+                r.setBatchid(rs.getInt("batchid"));
+                r.setRecordid(rs.getInt("recordid"));
+                r.setColid(rs.getInt("colid"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return r;
+    }
+
     /**
      *
      * @param newRecord

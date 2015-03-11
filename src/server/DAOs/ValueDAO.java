@@ -1,5 +1,7 @@
 package server.DAOs;
 
+import server.Models.Record;
+import server.Models.SearchResult;
 import server.Models.Value;
 
 import java.sql.*;
@@ -108,5 +110,40 @@ public class ValueDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<SearchResult> searchValues(int fieldid, String[] values){
+        String query = "SELECT * from value WHERE fieldid = ? and (";
+        for(int i = 0;i<values.length;i++){
+            query += "name LIKE ? ";
+            if(i != values.length-1){
+                query+=" OR ";
+            }
+        }
+        query+=")";
+        Connection con = null;
+        ArrayList<SearchResult>result = new ArrayList<SearchResult>();
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+
+            statement.setInt(1,fieldid);
+            for(int i = 0;i<values.length;i++){
+                statement.setString(i+2,values[i]);
+            }
+
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                SearchResult sr = new SearchResult();
+                Record r = database.getRecordDAO().getRecordsByRecordId(rs.getInt("recordid"));
+                sr.setFieldid(fieldid);
+                sr.setBatchid(r.getBatchid());
+                sr.setRecordNumber(r.getColid());
+
+                result.add(sr);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }

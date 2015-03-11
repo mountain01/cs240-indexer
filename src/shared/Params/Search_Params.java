@@ -6,11 +6,13 @@ package shared.Params;
 public class Search_Params extends Params {
     private String[] searchValues;
 
+    private String[] fieldIds;
+
     public String[] getSearchValues() {
         return searchValues;
     }
 
-    public Search_Params(String username, String password, String[] searchValues, Integer[] fieldIds) {
+    public Search_Params(String username, String password, String[] searchValues, String[] fieldIds) {
         super(username, password);
         this.searchValues = searchValues;
         this.fieldIds = fieldIds;
@@ -20,13 +22,11 @@ public class Search_Params extends Params {
         this.searchValues = searchValues;
     }
 
-    public Integer[] getFieldIds() {
+    public String[] getFieldIds() {
         return fieldIds;
     }
 
-    public void setFieldIds(Integer[] fieldIds) {
+    public void setFieldIds(String[] fieldIds) {
         this.fieldIds = fieldIds;
     }
-
-    private Integer[] fieldIds;
 }

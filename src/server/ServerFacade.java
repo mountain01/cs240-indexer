@@ -1,7 +1,9 @@
 package server;
 
+import com.sun.deploy.util.SearchPath;
 import server.DAOs.Database;
 import server.Models.*;
+import shared.Params.Search_Params;
 import shared.Params.SubmitBatch_Params;
 import shared.Results.*;
 
@@ -35,8 +37,36 @@ public class ServerFacade {
         return result;
     }
 
-    public Search_Result search(String auth){
-        return null;
+    public Search_Result search(String auth,Search_Params params){
+        Search_Result result = new Search_Result();
+        if(!validSearchParams(params)){
+            result.setError(true);
+        }else{
+            Database db = new Database();
+            ArrayList<SearchResult> searchResults = new ArrayList<SearchResult>();
+            if(validateUser(auth).isValidUser()){
+                db.startTransaction();
+                for(String fieldId:params.getFieldIds()){
+                    searchResults.addAll(db.getValueDAO().searchValues(Integer.parseInt(fieldId),params.getSearchValues()));
+                }
+                for(SearchResult sr:searchResults){
+                    sr.setUrl(db.getBatchDAO().getBatchById(sr.getBatchid()).getImagefilepath());
+                }
+                db.endTransaction();
+                if(db.wasSuccesful()){
+                    result.setResults(searchResults);
+                } else {
+                    result.setError(true);
+                }
+            }else{
+                result.setError(true);
+            }
+        }
+        return result;
+    }
+
+    private boolean validSearchParams(Search_Params params){
+        return !(params.getFieldIds().length == 0 && params.getSearchValues().length == 0);
     }
 
     public ValidateUser_Result validateUser(String auth){

@@ -6,12 +6,12 @@ package server.Models;
 public class SearchResult {
     private int batchid;
     private String url;
-    private int numRecords;
+    private int recordNumber;
     private int fieldid;
 
     @Override
     public String toString() {
-        return batchid+"\n"+url+"\n"+numRecords+"\n"+fieldid+"\n";
+        return batchid+"\n"+url+"\n"+recordNumber+"\n"+fieldid+"\n";
     }
 
     public int getBatchid() {
@@ -30,12 +30,12 @@ public class SearchResult {
         this.url = url;
     }
 
-    public int getNumRecords() {
-        return numRecords;
+    public int getRecordNumber() {
+        return recordNumber;
     }
 
-    public void setNumRecords(int numRecords) {
-        this.numRecords = numRecords;
+    public void setRecordNumber(int numRecords) {
+        this.recordNumber = numRecords;
     }
 
     public int getFieldid() {

@@ -13,6 +13,16 @@ public class Batch {
     int numRecords;
     List<Field> fields;
 
+    public List<Record> getRecords() {
+        return records;
+    }
+
+    public void setRecords(List<Record> records) {
+        this.records = records;
+    }
+
+    List<Record> records;
+
     public int getFirstycoord() {
         return firstycoord;
     }

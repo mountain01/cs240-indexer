@@ -35,6 +35,30 @@ public class RecordDAO {
 
                 r.setBatchid(rs.getInt("batchid"));
                 r.setRecordid(rs.getInt("recordid"));
+                r.setColid(rs.getInt("colid"));
+
+                result.add(r);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public ArrayList<Record> getRecordsByBatchId(int batchid){
+        ArrayList<Record> result = new ArrayList<Record>();
+        String query = "SELECT * FROM record WHERE batchid = ?";
+        Connection con = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setInt(1,batchid);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                Record r = new Record();
+
+                r.setBatchid(rs.getInt("batchid"));
+                r.setRecordid(rs.getInt("recordid"));
+                r.setColid(rs.getInt("colid"));
 
                 result.add(r);
             }

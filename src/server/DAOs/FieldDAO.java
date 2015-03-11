@@ -48,6 +48,34 @@ public class FieldDAO {
         return result;
     }
 
+    public ArrayList<Field> getFieldsbyProjectId(int projid){
+        ArrayList<Field> result = new ArrayList<Field>();
+        String query="SELECT * FROM field WHERE projectid = ?";
+        Connection con = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setInt(1,projid);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                Field f = new Field();
+
+                f.setProjectid(rs.getInt("projectid"));
+                f.setColid(rs.getInt("colid"));
+                f.setFieldid(rs.getInt("fieldid"));
+                f.setHelphtml(rs.getString("helphtml"));
+                f.setKnowndatahtml(rs.getString("knowndatahtml"));
+                f.setWidth(rs.getInt("width"));
+                f.setTitle(rs.getString("title"));
+                f.setXcoord(rs.getInt("xcoord"));
+
+                result.add(f);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     /**
      *
      * @param newField

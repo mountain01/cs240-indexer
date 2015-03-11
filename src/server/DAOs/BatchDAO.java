@@ -42,6 +42,65 @@ public class BatchDAO {
         return result;
     }
 
+    public Batch getBatchById(int batchid){
+        Batch b = null;
+        String query="SELECT * FROM batch WHERE batchid = ?";
+        Connection con = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setInt(1,batchid);
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                b = new Batch();
+                b.setBatchid(rs.getInt("batchid"));
+                b.setProjectid(rs.getInt("projectid"));
+                b.setImagefilepath(rs.getString("imagefilepath"));
+                b.setComplete(rs.getBoolean("complete"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return b;
+    }
+
+    public void setBatchComplete(int batchid){
+        String query = "UPDATE batch SET complete = ? WHERE batchid = ?";
+        Connection con = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+
+            statement.setBoolean(1,true);
+            statement.setInt(2,batchid);
+
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Batch> getBatchesByProjectID(int projId){
+        ArrayList<Batch> result= new ArrayList<Batch>();
+        String query="SELECT * FROM batch WHERE projectid = ? AND NOT complete";
+        Connection con = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setInt(1,projId);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                Batch b = new Batch();
+                b.setBatchid(rs.getInt("batchid"));
+                b.setProjectid(rs.getInt("projectid"));
+                b.setImagefilepath(rs.getString("imagefilepath"));
+                b.setComplete(rs.getBoolean("complete"));
+
+                result.add(b);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     /**
      *
      * @param newBatch

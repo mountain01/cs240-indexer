@@ -17,6 +17,31 @@ public class UserDAO {
         this.database = database;
     }
 
+    public User checkUser(String username,String password){
+        String query = "SELECT * FROM user WHERE username = ? AND password = ?";
+        Connection con = null;
+        User u = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setString(1,username);
+            statement.setString(2,password);
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                u = new User();
+                u.setCurrbatch(rs.getInt("currbatch"));
+                u.setEmail(rs.getString("email"));
+                u.setFirstname(rs.getString("firstname"));
+                u.setLastname(rs.getString("lastname"));
+                u.setPassword(rs.getString("password"));
+                u.setUsername(rs.getString("username"));
+                u.setRecordcount(rs.getInt("recordcount"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return u;
+    }
+
     /**
      *
      * @return list of all Users
@@ -102,6 +127,23 @@ public class UserDAO {
             e.printStackTrace();
         }
     };
+
+    public void updateUserBatchComplete(User myUser){
+
+        String query = "UPDATE user SET currbatch=?,recordcount=? WHERE userid=?";
+        Connection con = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+
+            statement.setInt(1,myUser.getCurrbatch());
+            statement.setInt(2,myUser.getRecordcount());
+            statement.setInt(3,myUser.getUserid());
+
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void deleteUser(User myBatch){
         String query = "DELETE FROM user WHERE userid = ?";
         Connection con = null;

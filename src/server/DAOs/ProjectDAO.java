@@ -44,6 +44,27 @@ public class ProjectDAO {
         return result;
     }
 
+    public Project getProjectById(int projid){
+        String query="SELECT * FROM project WHERE projectid = ?";
+        Connection con = null;
+        Project p = null;
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setInt(1,projid);
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                p = new Project();
+                p.setFirstycoord(rs.getInt("firstycood"));
+                p.setRecordheight(rs.getInt("recordheight"));
+                p.setRecordsperimage(rs.getInt("recordsperimage"));
+                p.setTitle(rs.getString("title"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return p;
+    }
+
     /**
      *
      * @param newProject

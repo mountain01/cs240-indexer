@@ -12,6 +12,39 @@ public class Batch {
     int recordHeight;
     int numRecords;
     List<Field> fields;
+
+    public int getFirstycoord() {
+        return firstycoord;
+    }
+
+    public void setFirstycoord(int firstycoord) {
+        this.firstycoord = firstycoord;
+    }
+
+    public int getRecordHeight() {
+        return recordHeight;
+    }
+
+    public void setRecordHeight(int recordHeight) {
+        this.recordHeight = recordHeight;
+    }
+
+    public int getNumRecords() {
+        return numRecords;
+    }
+
+    public void setNumRecords(int numRecords) {
+        this.numRecords = numRecords;
+    }
+
+    public List<Field> getFields() {
+        return fields;
+    }
+
+    public void setFields(List<Field> fields) {
+        this.fields = fields;
+    }
+
     String imagefilepath;
 
     @Override

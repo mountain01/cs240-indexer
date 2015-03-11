@@ -3,14 +3,14 @@ package shared.Params;
 /**
  * Created by Matt on 3/10/2015.
  */
-public class Searc_Params extends Params {
+public class Search_Params extends Params {
     private String[] searchValues;
 
     public String[] getSearchValues() {
         return searchValues;
     }
 
-    public Searc_Params(String username, String password, String[] searchValues, Integer[] fieldIds) {
+    public Search_Params(String username, String password, String[] searchValues, Integer[] fieldIds) {
         super(username, password);
         this.searchValues = searchValues;
         this.fieldIds = fieldIds;

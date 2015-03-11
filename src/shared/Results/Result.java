@@ -12,7 +12,7 @@ public class Result {
         this.error = error;
     }
 
-    boolean error;
+    boolean error = false;
 
     @Override
     public String toString() {

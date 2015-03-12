@@ -31,7 +31,8 @@ public class ProjectDAO {
             while (rs.next()){
                 Project p = new Project();
 
-                p.setFirstycoord(rs.getInt("firstycood"));
+                p.setProjectid(rs.getInt("projectid"));
+                p.setFirstycoord(rs.getInt("firstycoord"));
                 p.setRecordheight(rs.getInt("recordheight"));
                 p.setRecordsperimage(rs.getInt("recordsperimage"));
                 p.setTitle(rs.getString("title"));
@@ -54,7 +55,8 @@ public class ProjectDAO {
             ResultSet rs = statement.executeQuery();
             if(rs.next()){
                 p = new Project();
-                p.setFirstycoord(rs.getInt("firstycood"));
+                p.setProjectid(rs.getInt("projectid"));
+                p.setFirstycoord(rs.getInt("firstycoord"));
                 p.setRecordheight(rs.getInt("recordheight"));
                 p.setRecordsperimage(rs.getInt("recordsperimage"));
                 p.setTitle(rs.getString("title"));
@@ -97,7 +99,7 @@ public class ProjectDAO {
      * @param myProject
      */
     public void updateProject(Project myProject){
-        String query = "UPDATE project title=?,recordsperimage=?,recordheight=?,firstycoord=? WHERE projectid=?";
+        String query = "UPDATE project SET title=?,recordsperimage=?,recordheight=?,firstycoord=? WHERE projectid=?";
         Connection con = database.getConnection();
 
         try {

@@ -69,6 +69,16 @@ public class FieldDAOTests {
     }
 
     @Test
+    public void getFieldByIdTest(){
+        db.startTransaction();
+        field = db.getFieldDAO().addField(field);
+        Field f = db.getFieldDAO().getFieldById(1);
+        db.endTransaction();
+        Assert.assertTrue(db.wasSuccesful());
+        Assert.assertTrue(field.equals(f));
+    }
+
+    @Test
     public void updateField(){
         db.startTransaction();
         field = db.getFieldDAO().addField(field);

@@ -94,4 +94,30 @@ public class Project {
     public String toString() {
         return projectid+"\n"+title+"\n";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Project)) return false;
+
+        Project project = (Project) o;
+
+        if (firstycoord != project.firstycoord) return false;
+        if (projectid != project.projectid) return false;
+        if (recordheight != project.recordheight) return false;
+        if (recordsperimage != project.recordsperimage) return false;
+        if (title != null ? !title.equals(project.title) : project.title != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = projectid;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + recordsperimage;
+        result = 31 * result + firstycoord;
+        result = 31 * result + recordheight;
+        return result;
+    }
 }

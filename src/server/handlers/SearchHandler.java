@@ -1,15 +1,12 @@
 package server.handlers;
 
-import com.sun.deploy.util.SearchPath;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import server.ServerFacade;
 import shared.Params.Search_Params;
-import shared.Params.SubmitBatch_Params;
 import shared.Results.Search_Result;
-import shared.Results.SubmitBatch_Result;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;

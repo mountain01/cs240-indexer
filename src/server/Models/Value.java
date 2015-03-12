@@ -72,4 +72,28 @@ public class Value {
     public void setFieldid(int fieldid) {
         this.fieldid = fieldid;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Value)) return false;
+
+        Value value = (Value) o;
+
+        if (fieldid != value.fieldid) return false;
+        if (recordid != value.recordid) return false;
+        if (valueid != value.valueid) return false;
+        if (name != null ? !name.equals(value.name) : value.name != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = valueid;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + recordid;
+        result = 31 * result + fieldid;
+        return result;
+    }
 }

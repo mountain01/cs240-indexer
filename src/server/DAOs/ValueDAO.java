@@ -28,14 +28,14 @@ public class ValueDAO {
         PreparedStatement statement = null;
 
         try {
-            String query = "Select * from Value";
+            String query = "Select * from value";
             statement = con.prepareStatement(query);
 
             ResultSet rs = statement.executeQuery();
 
             while(rs.next()){
                 Value v = new Value();
-                v.setName(rs.getString("value"));
+                v.setName(rs.getString("name"));
                 v.setFieldid(rs.getInt("fieldid"));
                 v.setValueid(rs.getInt("valueid"));
                 v.setRecordid(rs.getInt("recordid"));
@@ -47,6 +47,32 @@ public class ValueDAO {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public Value getValueById(int valueid){
+        Value v = null;
+        Connection con = database.getConnection();
+        PreparedStatement statement = null;
+
+        try {
+            String query = "Select * from value WHERE valueid = ?";
+            statement = con.prepareStatement(query);
+            statement.setInt(1,valueid);
+            ResultSet rs = statement.executeQuery();
+
+            while(rs.next()){
+                v = new Value();
+                v.setName(rs.getString("name"));
+                v.setFieldid(rs.getInt("fieldid"));
+                v.setValueid(rs.getInt("valueid"));
+                v.setRecordid(rs.getInt("recordid"));
+
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return v;
     }
 
     /**

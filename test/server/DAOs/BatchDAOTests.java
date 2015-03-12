@@ -1,5 +1,4 @@
-package server.DAOTests;
-
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,21 +7,30 @@ import server.Models.Batch;
 
 import java.util.ArrayList;
 
-public class BatchDAOTest{
+/**
+ * Created by Matt on 3/11/2015.
+ */
+public class BatchDAOTests {
     private Database db;
     private Batch batch;
 
     @Before
-    public void beforeStuff(){
+    public void beforeStuff() {
         db = new Database();
+        db.deleteData();
         batch = new Batch();
         batch.setComplete(false);
         batch.setProjectid(5);
         batch.setImagefilepath("oldPath");
     }
 
+    @After
+    public void cleanUP(){
+        db.deleteData();
+    }
+
     @Test
-    public void addBatchTest(){
+    public void addBatchTest() {
         db.startTransaction();
         batch = db.getBatchDAO().addBatch(batch);
         db.endTransaction();
@@ -44,7 +52,7 @@ public class BatchDAOTest{
     }
 
     @Test
-    public volid setBatchCompleteTest(){
+    public void setBatchCompleteTest() {
         db.startTransaction();
         batch = db.getBatchDAO().addBatch(batch);
         db.getBatchDAO().setBatchComplete(batch.getBatchid());
@@ -52,7 +60,7 @@ public class BatchDAOTest{
         db.endTransaction();
         Assert.assertTrue(db.wasSuccesful());
         Assert.assertFalse(batch.isComplete());
-        Assert.assertSame(batch.getBatchid(),batch2.getBatchid());
+        Assert.assertSame(batch.getBatchid(), batch2.getBatchid());
         Assert.assertTrue(batch2.isComplete());
     }
 
@@ -66,6 +74,7 @@ public class BatchDAOTest{
         batch.setImagefilepath("newPath");
         batch.setComplete(true);
         Batch batch2 = db.getBatchDAO().addBatch(batch);
+        batch = db.getBatchDAO().getBatchById(1);
         batches = db.getBatchDAO().getBatches();
         db.endTransaction();
         Assert.assertTrue(db.wasSuccesful());
@@ -77,7 +86,7 @@ public class BatchDAOTest{
     }
 
     @Test
-    public void getBatchByIdTest(){
+    public void getBatchByIdTest() {
         db.startTransaction();
         batch = db.getBatchDAO().addBatch(batch);
         Batch batch2 = db.getBatchDAO().getBatchById(batch.getBatchid());
@@ -87,7 +96,7 @@ public class BatchDAOTest{
     }
 
     @Test
-    public void updateBatchTest(){
+    public void updateBatchTest() {
         db.startTransaction();
         batch = db.getBatchDAO().addBatch(batch);
         batch.setComplete(true);
@@ -95,16 +104,16 @@ public class BatchDAOTest{
         batch.setProjectid(newProjId);
         batch.setImagefilepath("newpath");
         db.getBatchDAO().updateBatch(batch);
-        Batch batch2 = db.getBatchDAO().getBatchesByProjectID(newProjId);
+        Batch batch2 = db.getBatchDAO().getBatchById(batch.getBatchid());
         db.endTransaction();
         Assert.assertTrue(db.wasSuccesful());
         Assert.assertTrue(batch.equals(batch2));
-        Assert.assertNotSame("oldPath",batch2.getImagefilepath());
-        Assert.assertSame("newpath",batch2.getImagefilepath());
+        Assert.assertNotSame("oldPath", batch2.getImagefilepath());
+        Assert.assertTrue("newpath".equals(batch2.getImagefilepath()));
     }
 
     @Test
-    public void deleteBatchTest(){
+    public void deleteBatchTest() {
         db.startTransaction();
         batch = db.getBatchDAO().addBatch(batch);
         db.getBatchDAO().deleteBatch(batch);

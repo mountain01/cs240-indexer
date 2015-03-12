@@ -42,6 +42,39 @@ public class Field {
         return title;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Field)) return false;
+
+        Field field = (Field) o;
+
+        if (colid != field.colid) return false;
+        if (fieldid != field.fieldid) return false;
+        if (projectid != field.projectid) return false;
+        if (width != field.width) return false;
+        if (xcoord != field.xcoord) return false;
+        if (helphtml != null ? !helphtml.equals(field.helphtml) : field.helphtml != null) return false;
+        if (knowndatahtml != null ? !knowndatahtml.equals(field.knowndatahtml) : field.knowndatahtml != null)
+            return false;
+        if (title != null ? !title.equals(field.title) : field.title != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = fieldid;
+        result = 31 * result + projectid;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + xcoord;
+        result = 31 * result + width;
+        result = 31 * result + (helphtml != null ? helphtml.hashCode() : 0);
+        result = 31 * result + (knowndatahtml != null ? knowndatahtml.hashCode() : 0);
+        result = 31 * result + colid;
+        return result;
+    }
+
     /**
      *
      * @return associated program id

@@ -76,6 +76,32 @@ public class FieldDAO {
         return result;
     }
 
+    public Field getFieldById(int fieldid){
+        Field f = null;
+        String query="SELECT * FROM field WHERE fieldid = ?";
+        Connection con = database.getConnection();
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setInt(1,fieldid);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                f = new Field();
+
+                f.setProjectid(rs.getInt("projectid"));
+                f.setColid(rs.getInt("colid"));
+                f.setFieldid(rs.getInt("fieldid"));
+                f.setHelphtml(rs.getString("helphtml"));
+                f.setKnowndatahtml(rs.getString("knowndatahtml"));
+                f.setWidth(rs.getInt("width"));
+                f.setTitle(rs.getString("title"));
+                f.setXcoord(rs.getInt("xcoord"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return f;
+    }
+
     /**
      *
      * @param newField

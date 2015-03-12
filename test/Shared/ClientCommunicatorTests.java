@@ -35,6 +35,12 @@ public class ClientCommunicatorTests {
     }
 
     @Test
+    public void downloadFileTest(){
+        byte[] result = ClientCommunicator.getInstance().downloadFile("/test.txt");
+        Assert.assertTrue(new String(result).equals("This was a test"));
+    }
+
+    @Test
     public void getValidUserTest(){
         ValidateUser_Params params = new ValidateUser_Params("test1","test1");
         ValidateUser_Result result = ClientCommunicator.getInstance().validateUser(params);
@@ -156,5 +162,15 @@ public class ClientCommunicatorTests {
         Search_Result result = ClientCommunicator.getInstance().search(params);
         Assert.assertFalse(result.isError());
         Assert.assertSame(24,result.getResults().size());
+    }
+
+    @Test
+    public void searchNotWordTest(){
+        String[] fieldids={"13","10"};
+        String[] values = {"jfeiajeks"};
+        Search_Params params = new Search_Params("test1","test1",values,fieldids);
+        Search_Result result = ClientCommunicator.getInstance().search(params);
+        Assert.assertFalse(result.isError());
+        Assert.assertSame(0,result.getResults().size());
     }
 }

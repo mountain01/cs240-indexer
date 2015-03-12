@@ -2,7 +2,6 @@ package server;
 
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
-import com.sun.net.httpserver.HttpsServer;
 import server.handlers.*;
 
 import java.io.IOException;
@@ -40,6 +39,7 @@ public class Server {
         server.createContext("/Search",searchHandler);
         server.createContext("/SubmitBatch",submitBatchHandler);
         server.createContext("/GetFields",getFieldsHandler);
+        server.createContext("/",DownloadFileHandler);
 
         server.start();
 
@@ -52,9 +52,10 @@ public class Server {
     private HttpHandler downloadFileHandler = new DownloadFileHandler();
     private HttpHandler submitBatchHandler = new SubmitBatchHandler();
     private HttpHandler searchHandler = new SearchHandler();
+    private HttpHandler DownloadFileHandler = new DownloadFileHandler();
     private HttpHandler getFieldsHandler = new GetFieldsHandler();
 
-    public static void main(String[] arg){new Server(arg).run();};
+    public static void main(String[] arg){new Server(arg).run();}
 
     private static Server testServer;
 

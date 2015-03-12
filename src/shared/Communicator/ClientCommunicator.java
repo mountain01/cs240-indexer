@@ -6,7 +6,9 @@ import server.Models.SearchResult;
 import shared.Params.*;
 import shared.Results.*;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.*;
 
 import com.thoughtworks.xstream.XStream;
@@ -127,6 +129,32 @@ public class ClientCommunicator {
             result.setError(true);
         }
         return result;
+    }
+
+    public byte[] downloadFile(String filename){
+        byte[] result = null;
+        try {
+            URL url = new URL(URL_PREFIX + filename);
+            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            connection.setRequestMethod(HTTP_GET);
+            connection.connect();
+            result = toByteArray(connection.getInputStream());
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    private byte[] toByteArray(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+        byte[] result = new byte[1024];
+        int read;
+        while ((read = inputStream.read(result, 0, result.length)) != -1) {
+            byteStream.write(result, 0, read);
+        }
+        byteStream.flush();
+        return  byteStream.toByteArray();
     }
 
     private Object doGet(String urlPath, Params params)  {

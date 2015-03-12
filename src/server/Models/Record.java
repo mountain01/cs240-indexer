@@ -59,4 +59,28 @@ public class Record {
     public void setBatchid(int batchid) {
         this.batchid = batchid;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Record)) return false;
+
+        Record record = (Record) o;
+
+        if (batchid != record.batchid) return false;
+        if (colid != record.colid) return false;
+        if (recordid != record.recordid) return false;
+        if (values != null ? !values.equals(record.values) : record.values != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = recordid;
+        result = 31 * result + batchid;
+        result = 31 * result + colid;
+        result = 31 * result + (values != null ? values.hashCode() : 0);
+        return result;
+    }
 }

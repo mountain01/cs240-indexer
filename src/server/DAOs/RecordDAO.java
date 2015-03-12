@@ -112,12 +112,14 @@ public class RecordDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        for(Field field :newRecord.getValues().keySet()){
-            Value value = new Value();
-            value.setFieldid(field.getFieldid());
-            value.setRecordid(newRecord.getRecordid());
-            value.setName(newRecord.getValues().get(field));
-            database.getValueDAO().addValue(value);
+        if(newRecord.getValues() != null) {
+            for (Field field : newRecord.getValues().keySet()) {
+                Value value = new Value();
+                value.setFieldid(field.getFieldid());
+                value.setRecordid(newRecord.getRecordid());
+                value.setName(newRecord.getValues().get(field));
+                database.getValueDAO().addValue(value);
+            }
         }
         return newRecord;
     };
@@ -127,13 +129,14 @@ public class RecordDAO {
      * @param myRecord
      */
     public void updateRecord(Record myRecord){
-        String query = "UPDATE record SET batchid=? WHERE recordid=?";
+        String query = "UPDATE record SET batchid=?,colid=? WHERE recordid=?";
         Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 
             statement.setInt(1,myRecord.getBatchid());
-            statement.setInt(2,myRecord.getRecordid());
+            statement.setInt(2,myRecord.getColid());
+            statement.setInt(3,myRecord.getRecordid());
 
             statement.execute();
         } catch (SQLException e) {

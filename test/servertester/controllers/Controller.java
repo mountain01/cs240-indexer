@@ -74,6 +74,7 @@ public class Controller implements IController {
 
 	@Override
 	public void executeOperation() {
+        ClientCommunicator.getInstance().setHost(getView().getHost());
         if(!getView().getPort().matches("^[0-9]+$")){
             getView().setResponse("FAILED\n");
             return;

@@ -19,10 +19,15 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
  */
 public class ClientCommunicator {
 
-    private static final String SERVER_HOST = "localhost";
+    private String SERVER_HOST = "localhost";
 
     public void setPort(int SERVER_PORT) {
         this.SERVER_PORT = SERVER_PORT;
+        URL_PREFIX = "http://" + SERVER_HOST + ":" + SERVER_PORT;
+    }
+
+    public void setHost(String newHost) {
+        this.SERVER_HOST = newHost;
         URL_PREFIX = "http://" + SERVER_HOST + ":" + SERVER_PORT;
     }
 

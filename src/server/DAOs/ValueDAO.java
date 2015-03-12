@@ -24,7 +24,7 @@ public class ValueDAO {
      */
     public ArrayList<Value> getValues(){
         ArrayList<Value> result = new ArrayList<Value>();
-        Connection con = null;
+        Connection con = database.getConnection();
         PreparedStatement statement = null;
 
         try {
@@ -54,7 +54,7 @@ public class ValueDAO {
      * @param newValue
      */
     public Value addValue(Value newValue){
-        Connection con = null;
+        Connection con = database.getConnection();
         String query = "INSERT INTO value (recordid,name,fieldid) VALUES (?,?,?)";
         try {
             PreparedStatement statement = con.prepareStatement(query);
@@ -81,7 +81,7 @@ public class ValueDAO {
      */
     public void updateValue(Value myValue){
         String query="UPDATE value SET fieldid=?,name=?,recordid=? WHERE valueid = ?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
             statement.setInt(1,myValue.getFieldid());
@@ -100,7 +100,7 @@ public class ValueDAO {
 
     public void deleteValue(Value myBatch){
         String query = "DELETE FROM value WHERE valueid = ?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 
@@ -121,7 +121,7 @@ public class ValueDAO {
             }
         }
         query+=")";
-        Connection con = null;
+        Connection con = database.getConnection();
         ArrayList<SearchResult>result = new ArrayList<SearchResult>();
         try {
             PreparedStatement statement = con.prepareStatement(query);

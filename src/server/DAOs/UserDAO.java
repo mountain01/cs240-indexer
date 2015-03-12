@@ -19,7 +19,7 @@ public class UserDAO {
 
     public User checkUser(String username,String password){
         String query = "SELECT * FROM user WHERE username = ? AND password = ?";
-        Connection con = null;
+        Connection con = database.getConnection();
         User u = null;
         try {
             PreparedStatement statement = con.prepareStatement(query);
@@ -50,7 +50,7 @@ public class UserDAO {
 
         ArrayList<User> result = new ArrayList<User>();
         String query = "SELECT * FROM user";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
             ResultSet rs = statement.executeQuery();
@@ -78,7 +78,7 @@ public class UserDAO {
      */
     public void addUser(User newUser){
         String query = "INSERT INTO user (username,password,firstname,lastname,currbatch,recordcount,email) VALUES(?,?,?,?,?,?,?)";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 
@@ -109,7 +109,7 @@ public class UserDAO {
     public void updateUser(User myUser){
 
         String query = "UPDATE user SET username=?,password=?,firstname=?,lastname=?,currbatch=?,recordcount=?,email=? WHERE userid=?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 
@@ -131,7 +131,7 @@ public class UserDAO {
     public void updateUserBatchComplete(User myUser){
 
         String query = "UPDATE user SET currbatch=?,recordcount=? WHERE userid=?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 
@@ -146,7 +146,7 @@ public class UserDAO {
     }
     public void deleteUser(User myBatch){
         String query = "DELETE FROM user WHERE userid = ?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 

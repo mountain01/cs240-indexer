@@ -26,7 +26,7 @@ public class RecordDAO {
 
         ArrayList<Record> result = new ArrayList<Record>();
         String query = "SELECT * FROM record";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
             ResultSet rs = statement.executeQuery();
@@ -48,7 +48,7 @@ public class RecordDAO {
     public ArrayList<Record> getRecordsByBatchId(int batchid){
         ArrayList<Record> result = new ArrayList<Record>();
         String query = "SELECT * FROM record WHERE batchid = ?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
             statement.setInt(1,batchid);
@@ -71,7 +71,7 @@ public class RecordDAO {
     public Record getRecordsByRecordId(int recordid){
         Record r = null;
         String query = "SELECT * FROM record WHERE recordid = ?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
             statement.setInt(1,recordid);
@@ -95,7 +95,7 @@ public class RecordDAO {
      */
     public Record addRecord(Record newRecord){
         String query = "INSERT INTO record (batchid,colid) VALUES (?,?)";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 
@@ -128,7 +128,7 @@ public class RecordDAO {
      */
     public void updateRecord(Record myRecord){
         String query = "UPDATE record SET batchid=? WHERE recordid=?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 
@@ -143,7 +143,7 @@ public class RecordDAO {
 
     public void deleteRecord(Record myBatch){
         String query = "DELETE FROM record WHERE recordid = ?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 

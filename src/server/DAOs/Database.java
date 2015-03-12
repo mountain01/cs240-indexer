@@ -10,7 +10,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
-//TODO Make a delete all from database method
 public class Database{
 
     private BatchDAO batchDAO;
@@ -28,11 +27,11 @@ public class Database{
     }
 
     public Database(){
-        batchDAO = new BatchDAO(this); //Tested
+        batchDAO = new BatchDAO(this);
         fieldDAO = new FieldDAO(this);
         projectDAO = new ProjectDAO(this);
         recordDAO = new RecordDAO(this);
-        userDAO = new UserDAO(this); //Tested
+        userDAO = new UserDAO(this);
         valueDAO = new ValueDAO(this);
 
         try{
@@ -94,7 +93,7 @@ public class Database{
     }
 
     public void startTransaction(){
-        String connectionUrl = "jdbc:sqlite:sql" + File.separator + "IndexerDB.db";
+        String connectionUrl = "jdbc:sqlite:Database" + File.separator + "Indexer.sqlite";
         try{
             connection = DriverManager.getConnection(connectionUrl);
             connection.setAutoCommit(false);
@@ -131,8 +130,8 @@ public class Database{
     }
 
     public void deleteData(){
-        File to = new File("sql" + File.separator + "IndexerDB.db");
-        File from = new File("sql" + File.separator + "IndexerBlank.db");
+        File to = new File("Database" + File.separator + "Indexer.sqlite");
+        File from = new File("Database" + File.separator + "blankIndexer.sqlite");
 
         to.delete();
 

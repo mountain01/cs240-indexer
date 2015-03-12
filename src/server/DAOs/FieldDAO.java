@@ -24,7 +24,7 @@ public class FieldDAO {
     public ArrayList<Field> getFields(){
         ArrayList<Field> result = new ArrayList<Field>();
         String query="SELECT * FROM field";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
             ResultSet rs = statement.executeQuery();
@@ -51,7 +51,7 @@ public class FieldDAO {
     public ArrayList<Field> getFieldsbyProjectId(int projid){
         ArrayList<Field> result = new ArrayList<Field>();
         String query="SELECT * FROM field WHERE projectid = ?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
             statement.setInt(1,projid);
@@ -81,8 +81,8 @@ public class FieldDAO {
      * @param newField
      */
     public Field addField(Field newField){
-        String query = "INSERT INTO field (project,colid,helphtml,knowndatahtml,width,title,xcoord) VALUES (?,?,?,?,?,?,?)";
-        Connection con = null;
+        String query = "INSERT INTO field (projectid,colid,helphtml,knowndatahtml,width,title,xcoord) VALUES (?,?,?,?,?,?,?)";
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
              statement.setInt(1,newField.getProjectid());
@@ -113,7 +113,7 @@ public class FieldDAO {
      */
     public void updateField(Field myField){
         String query = "UPDATE field SET projectid=?,colid=?,helphtml=?,knowndatahtml=?,width=?,title=?,xcoord=? WHERE fieldid=?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
             statement.setInt(1,myField.getProjectid());
@@ -134,7 +134,7 @@ public class FieldDAO {
 
     public void deleteField(Field myBatch){
         String query = "DELETE FROM field WHERE fieldid = ?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 

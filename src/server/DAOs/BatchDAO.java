@@ -23,7 +23,7 @@ public class BatchDAO {
     public ArrayList<Batch> getBatches(){
         ArrayList<Batch> result= new ArrayList<Batch>();
         String query="SELECT * FROM batch";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
             ResultSet rs = statement.executeQuery();
@@ -45,7 +45,7 @@ public class BatchDAO {
     public Batch getBatchById(int batchid){
         Batch b = null;
         String query="SELECT * FROM batch WHERE batchid = ?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
             statement.setInt(1,batchid);
@@ -65,7 +65,7 @@ public class BatchDAO {
 
     public void setBatchComplete(int batchid){
         String query = "UPDATE batch SET complete = ? WHERE batchid = ?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 
@@ -81,7 +81,7 @@ public class BatchDAO {
     public ArrayList<Batch> getBatchesByProjectID(int projId){
         ArrayList<Batch> result= new ArrayList<Batch>();
         String query="SELECT * FROM batch WHERE projectid = ? AND NOT complete";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
             statement.setInt(1,projId);
@@ -107,7 +107,7 @@ public class BatchDAO {
      */
     public Batch addBatch(Batch newBatch){
         String query = "INSERT INTO batch (imagefilepath,complete,projectid) VALUES (?,?,?)";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 
@@ -135,8 +135,8 @@ public class BatchDAO {
      * @param myBatch
      */
     public void updateBatch(Batch myBatch){
-        String query = "UPDATE batch SET projectid=?,imagefilepath=?,coplete=? WHERE batchid=?";
-        Connection con = null;
+        String query = "UPDATE batch SET projectid=?,imagefilepath=?,complete=? WHERE batchid=?";
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 
@@ -157,7 +157,7 @@ public class BatchDAO {
      */
     public void deleteBatch(Batch myBatch){
         String query = "DELETE FROM batch WHERE batchid = ?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 

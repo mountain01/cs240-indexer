@@ -23,7 +23,7 @@ public class ProjectDAO {
      */
     public ArrayList<Project> getProjects(){
         String query="SELECT * FROM project";
-        Connection con = null;
+        Connection con = database.getConnection();
         ArrayList<Project> result = new ArrayList<Project>();
         try {
             PreparedStatement statement = con.prepareStatement(query);
@@ -46,7 +46,7 @@ public class ProjectDAO {
 
     public Project getProjectById(int projid){
         String query="SELECT * FROM project WHERE projectid = ?";
-        Connection con = null;
+        Connection con = database.getConnection();
         Project p = null;
         try {
             PreparedStatement statement = con.prepareStatement(query);
@@ -70,8 +70,8 @@ public class ProjectDAO {
      * @param newProject
      */
     public Project addProject(Project newProject){
-        String query = "INSTERT INTO project (title,recordsperimage,recordheight,firstycoord) VALUES (?,?,?,?)";
-        Connection con = null;
+        String query = "INSERT INTO project (title,recordsperimage,recordheight,firstycoord) VALUES (?,?,?,?)";
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
             statement.setString(1,newProject.getTitle());
@@ -98,7 +98,7 @@ public class ProjectDAO {
      */
     public void updateProject(Project myProject){
         String query = "UPDATE project title=?,recordsperimage=?,recordheight=?,firstycoord=? WHERE projectid=?";
-        Connection con = null;
+        Connection con = database.getConnection();
 
         try {
             PreparedStatement statement = con.prepareStatement(query);
@@ -117,7 +117,7 @@ public class ProjectDAO {
 
     public void deleteProject(Project myBatch){
         String query = "DELETE FROM project WHERE projectid = ?";
-        Connection con = null;
+        Connection con = database.getConnection();
         try {
             PreparedStatement statement = con.prepareStatement(query);
 

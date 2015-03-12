@@ -29,7 +29,7 @@ public class Importer {
     private Database database = new Database();
 
     public static void main (String[] args){
-
+        new Importer().dataImport(args[0]);
     }
 
     public void dataImport(String filename){

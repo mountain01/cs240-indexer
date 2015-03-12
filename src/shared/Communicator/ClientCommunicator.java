@@ -18,15 +18,31 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 public class ClientCommunicator {
 
     private static final String SERVER_HOST = "localhost";
-    private static final int SERVER_PORT = 8080;
-    private static final String URL_PREFIX = "http://" + SERVER_HOST + ":" + SERVER_PORT;
+
+    public void setPort(int SERVER_PORT) {
+        this.SERVER_PORT = SERVER_PORT;
+        URL_PREFIX = "http://" + SERVER_HOST + ":" + SERVER_PORT;
+    }
+
+    private  int SERVER_PORT = 8080;
+    private String URL_PREFIX = "http://" + SERVER_HOST + ":" + SERVER_PORT;
     private static final String HTTP_GET = "GET";
     private static final String HTTP_POST = "POST";
 
-    private XStream xmlStream;
+    private XStream xmlStream = new XStream(new DomDriver());
+    private static ClientCommunicator instance;
+
+    public static ClientCommunicator getInstance(){
+        if(instance == null){
+            instance = new ClientCommunicator();
+        }
+        return instance;
+    }
+
+
 
     public DownloadBatch_Result downloadBatch(DownloadBatch_Params params){
-        DownloadBatch_Result result = (DownloadBatch_Result)doGet("/DownloadBatch",params);
+        DownloadBatch_Result result = (DownloadBatch_Result)doGet("/DownloadBatch/"+params.getProjectid(),params);
         if(result == null){
             result = new DownloadBatch_Result();
             result.setError(true);
@@ -47,7 +63,7 @@ public class ClientCommunicator {
     }
 
     public GetFields_Result getFields(GetFields_Params params){
-        GetFields_Result result = (GetFields_Result)doGet("/GetFields",params);
+        GetFields_Result result = (GetFields_Result)doGet("/GetFields/"+params.getProjectid(),params);
         if (result == null){
             result = new GetFields_Result();
             result.setError(true);
@@ -71,7 +87,7 @@ public class ClientCommunicator {
     }
 
     public GetSampleImage_Result getSampleImage(GetSampleImage_Params params){
-        GetSampleImage_Result result = (GetSampleImage_Result)doGet("/GetSampleImage",params);
+        GetSampleImage_Result result = (GetSampleImage_Result)doGet("/GetSampleImage/"+params.getProjectId(),params);
         if(result == null){
             result = new GetSampleImage_Result();
             result.setError(true);
@@ -96,7 +112,7 @@ public class ClientCommunicator {
     }
 
     public SubmitBatch_Result submitBatch(SubmitBatch_Params params){
-        SubmitBatch_Result result = (SubmitBatch_Result) doPost("/SubmitBatch",params);
+        SubmitBatch_Result result = (SubmitBatch_Result) doPost("/SubmitBatch/"+params.getBatchId(),params);
         if(result == null){
             result = new SubmitBatch_Result();
             result.setError(true);
@@ -121,9 +137,7 @@ public class ClientCommunicator {
             connection.setRequestMethod(HTTP_GET);
             connection.addRequestProperty("authorization", params.getUsername() + ":" + params.getPassword());
             connection.connect();
-            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                result = xmlStream.fromXML(connection.getInputStream());
-            }
+            result = xmlStream.fromXML(connection.getInputStream());
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -142,9 +156,7 @@ public class ClientCommunicator {
             connection.connect();
             xmlStream.toXML(params, connection.getOutputStream());
             connection.getOutputStream().close();
-            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                result = xmlStream.fromXML(connection.getInputStream());
-            }
+            result = xmlStream.fromXML(connection.getInputStream());
         }
         catch (IOException e) {
             e.printStackTrace();

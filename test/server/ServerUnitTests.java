@@ -30,6 +30,7 @@ public class ServerUnitTests {
                 "server.DAOTests.RecordDAOTests",
                 "server.DAOTests.UserDAOTests",
                 "server.DAOTests.ValueDAOTests",
+                "Shared.ClientCommunicatorTests"
 		};
 
 		org.junit.runner.JUnitCore.main(testClasses);

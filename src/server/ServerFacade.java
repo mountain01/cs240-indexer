@@ -80,7 +80,7 @@ public class ServerFacade {
             User user = database.getUserDAO().checkUser(userInfo[0],userInfo[1]);
             database.endTransaction();
             result.setUser(user);
-            result.setError(database.wasSuccesful());
+            result.setError(!database.wasSuccesful());
             result.setValidUser(user != null);
         }
         return result;
@@ -217,7 +217,7 @@ public class ServerFacade {
             User user = validUser.getUser();
             if(validUser.isValidUser()&&user.getCurrbatch() == params.getBatchId()&&!batch.isComplete()){
                 ArrayList<Field> fields = db.getFieldDAO().getFieldsbyProjectId(batch.getProjectid());
-                int colNum = 0;
+                int colNum = 1;
                 for(String[] values:params.getFieldValues()){
                     Record r = new Record();
                     r.setBatchid(params.getBatchId());
@@ -236,10 +236,10 @@ public class ServerFacade {
                     user.setRecordcount(batch.getNumRecords()+user.getRecordcount());
                     db.getUserDAO().updateUserBatchComplete(user);
                     db.getBatchDAO().setBatchComplete(params.getBatchId());
-                    db.endTransaction();
-                    if(!db.wasSuccesful()){
-                        result.setError(true);
-                    }
+                }
+                db.endTransaction();
+                if(!db.wasSuccesful()){
+                    result.setError(true);
                 }
             }else{
                 result.setError(true);
@@ -261,6 +261,7 @@ public class ServerFacade {
         } else {
             if(validateUser(auth).isValidUser()){
                 Database db = new Database();
+                db.startTransaction();
                 ArrayList<Field> fields = db.getFieldDAO().getFieldsbyProjectId(projid);
                 db.endTransaction();
                 if(db.wasSuccesful()){

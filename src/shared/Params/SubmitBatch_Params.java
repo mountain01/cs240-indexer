@@ -9,6 +9,10 @@ public class SubmitBatch_Params extends Params {
     private ArrayList<String[]> fieldValues;
     private int batchId;
 
+    public SubmitBatch_Params() {
+        super();
+    }
+
     public ArrayList<String[]> getFieldValues() {
         return fieldValues;
     }

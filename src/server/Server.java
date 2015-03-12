@@ -13,16 +13,24 @@ import java.net.InetSocketAddress;
  */
 public class Server {
 
-    private static final int PORT_NUMBER = 8080;
+    private static int PORT_NUMBER = 8080;
     private static final int CONNECTIONS = 10;
     private HttpServer server;
 
+    public Server(String[] args) {
+        if(args.length >= 1){
+            PORT_NUMBER = Integer.parseInt(args[0]);
+        }
+    }
+
     private void run(){
         try {
-            server = HttpsServer.create(new InetSocketAddress(PORT_NUMBER),CONNECTIONS);
+            server = HttpServer.create(new InetSocketAddress(PORT_NUMBER),CONNECTIONS);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        server.setExecutor(null); // use the default executor
 
         server.createContext("/ValidateUser",validateUserHandler);
         server.createContext("/GetProject", getProjectHandler);
@@ -32,6 +40,8 @@ public class Server {
         server.createContext("/Search",searchHandler);
         server.createContext("/SubmitBatch",submitBatchHandler);
         server.createContext("/GetFields",getFieldsHandler);
+
+        server.start();
 
     }
 
@@ -44,6 +54,18 @@ public class Server {
     private HttpHandler searchHandler = new SearchHandler();
     private HttpHandler getFieldsHandler = new GetFieldsHandler();
 
-    public static void main(String[] arg){new Server().run();};
+    public static void main(String[] arg){new Server(arg).run();};
+
+    private static Server testServer;
+
+    public static void startTest(){
+        String[] args = {"34590"};
+        testServer = new Server(args);
+        testServer.run();
+    }
+
+    public static void endTest(){
+        testServer.server.stop(10);
+    }
 
 }

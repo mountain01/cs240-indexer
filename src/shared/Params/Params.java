@@ -12,6 +12,10 @@ public class Params {
         this.password = password;
     }
 
+    public Params() {
+
+    }
+
     public String getUsername() {
 
         return username;

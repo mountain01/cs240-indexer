@@ -24,6 +24,38 @@ public class User {
         return userid;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (currbatch != user.currbatch) return false;
+        if (recordcount != user.recordcount) return false;
+        if (userid != user.userid) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (firstname != null ? !firstname.equals(user.firstname) : user.firstname != null) return false;
+        if (lastname != null ? !lastname.equals(user.lastname) : user.lastname != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (username != null ? !username.equals(user.username) : user.username != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = userid;
+        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + recordcount;
+        result = 31 * result + currbatch;
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        return result;
+    }
+
     public User(String firstname, String lastname, String username, String password, int recordcount, String email) {
         this.firstname = firstname;
         this.lastname = lastname;

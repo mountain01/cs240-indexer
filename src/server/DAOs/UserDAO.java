@@ -35,6 +35,7 @@ public class UserDAO {
                 u.setPassword(rs.getString("password"));
                 u.setUsername(rs.getString("username"));
                 u.setRecordcount(rs.getInt("recordcount"));
+                u.setUserid(rs.getInt("userid"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,6 +64,7 @@ public class UserDAO {
                 u.setPassword(rs.getString("password"));
                 u.setUsername(rs.getString("username"));
                 u.setRecordcount(rs.getInt("recordcount"));
+                u.setUserid(rs.getInt("userid"));
 
                 result.add(u);
             }
@@ -72,11 +74,35 @@ public class UserDAO {
         return result;
     };
 
+    public User getUserById(int userid){
+        User u = null;
+        String query = "SELECT * FROM user WHERE userid = ?";
+        Connection con = database.getConnection();
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setInt(1,userid);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                u = new User();
+                u.setCurrbatch(rs.getInt("currbatch"));
+                u.setEmail(rs.getString("email"));
+                u.setFirstname(rs.getString("firstname"));
+                u.setLastname(rs.getString("lastname"));
+                u.setPassword(rs.getString("password"));
+                u.setUsername(rs.getString("username"));
+                u.setUserid(rs.getInt("userid"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return u;
+    };
+
     /**
      *
      * @param newUser
      */
-    public void addUser(User newUser){
+    public User addUser(User newUser){
         String query = "INSERT INTO user (username,password,firstname,lastname,currbatch,recordcount,email) VALUES(?,?,?,?,?,?,?)";
         Connection con = database.getConnection();
         try {
@@ -100,6 +126,7 @@ public class UserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return newUser;
     };
 
     /**

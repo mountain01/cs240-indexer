@@ -31,7 +31,11 @@ public class Field {
 
     @Override
     public String toString() {
-        return fieldid+"\n"+colid+"\n"+title+"\n"+helphtml+"\n"+xcoord+"\n"+width+"\n"+knowndatahtml+"\n";
+        String returnString = fieldid+"\n"+colid+"\n"+title+"\n"+helphtml+"\n"+xcoord+"\n"+width+"\n";
+        if(!knowndatahtml.equals("")){
+            returnString+=knowndatahtml+"\n";
+        }
+        return returnString;
     }
 
     /**

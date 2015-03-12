@@ -151,6 +151,7 @@ public class ServerFacade {
                     }else{
                         userBatch.setFirstycoord(project.getFirstycoord());
                         userBatch.setRecordHeight(project.getRecordheight());
+                        userBatch.setNumRecords(project.getRecordsperimage());
                         validUser.getUser().setCurrbatch(userBatch.getBatchid());
                         db.getUserDAO().updateUser(validUser.getUser());
                         db.endTransaction();
@@ -191,6 +192,7 @@ public class ServerFacade {
                     }else{
                         userBatch.setFirstycoord(project.getFirstycoord());
                         userBatch.setRecordHeight(project.getRecordheight());
+                        userBatch.setNumRecords(project.getRecordsperimage());
                         db.endTransaction();
                         if(db.wasSuccesful()){
                             result.setBatch(userBatch);

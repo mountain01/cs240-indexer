@@ -31,7 +31,7 @@ public class Field {
 
     @Override
     public String toString() {
-        return fieldid+"\n"+title+"\n"+helphtml+"\n"+xcoord+"\n"+width+"\n"+knowndatahtml+"\n";
+        return fieldid+"\n"+colid+"\n"+title+"\n"+helphtml+"\n"+xcoord+"\n"+width+"\n"+knowndatahtml+"\n";
     }
 
     /**

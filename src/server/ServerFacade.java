@@ -214,6 +214,7 @@ public class ServerFacade {
             Database db = new Database();
             db.startTransaction();
             Batch batch = db.getBatchDAO().getBatchById(params.getBatchId());
+            Project project = db.getProjectDAO().getProjectById(batch.getProjectid());
             ValidateUser_Result validUser = validateUser(auth);
             User user = validUser.getUser();
             if(validUser.isValidUser()&&user.getCurrbatch() == params.getBatchId()&&!batch.isComplete()){
@@ -233,11 +234,11 @@ public class ServerFacade {
                         }
                     }
                     db.getRecordDAO().addRecord(r);
-                    user.setCurrbatch(0);
-                    user.setRecordcount(batch.getNumRecords()+user.getRecordcount());
-                    db.getUserDAO().updateUserBatchComplete(user);
-                    db.getBatchDAO().setBatchComplete(params.getBatchId());
                 }
+                user.setCurrbatch(0);
+                user.setRecordcount(project.getRecordsperimage()+user.getRecordcount());
+                db.getUserDAO().updateUserBatchComplete(user);
+                db.getBatchDAO().setBatchComplete(params.getBatchId());
                 db.endTransaction();
                 if(!db.wasSuccesful()){
                     result.setError(true);

@@ -111,8 +111,11 @@ public class ClientCommunicatorTests {
         list.add(recordValues2);
         params2.setFieldValues(list);
         SubmitBatch_Result result2 = ClientCommunicator.getInstance().submitBatch(params2);
+        ValidateUser_Params up = new ValidateUser_Params("test1","test1");
+        ValidateUser_Result ur = ClientCommunicator.getInstance().validateUser(up);
         Assert.assertFalse(result1.isError());
         Assert.assertFalse(result2.isError());
+        Assert.assertSame(8,ur.getUser().getRecordcount());
     }
 
     @Test
@@ -141,7 +144,7 @@ public class ClientCommunicatorTests {
         Search_Params params = new Search_Params("test1","test1",values,fieldids);
         Search_Result result = ClientCommunicator.getInstance().search(params);
         Assert.assertFalse(result.isError());
-        Assert.assertSame(24,result.getResults().size());
+        Assert.assertSame(24, result.getResults().size());
     }
 
     @Test

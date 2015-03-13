@@ -264,7 +264,7 @@ public class ServerFacade {
             if(validateUser(auth).isValidUser()){
                 Database db = new Database();
                 db.startTransaction();
-                ArrayList<Field> fields = db.getFieldDAO().getFieldsbyProjectId(projid);
+                ArrayList<Field> fields = projid == -1? db.getFieldDAO().getFields(): db.getFieldDAO().getFieldsbyProjectId(projid);
                 db.endTransaction();
                 if(db.wasSuccesful()){
                     result.setFields(fields);

@@ -82,8 +82,14 @@ public class ClientCommunicatorTests {
 
     @Test
     public void getFieldsTest(){
-        GetFields_Params params = new GetFields_Params("test1","test1",1);
+        GetFields_Params params = new GetFields_Params();
+        params.setUsername("test1");
+        params.setPassword("test1");
         GetFields_Result result = ClientCommunicator.getInstance().getFields(params);
+        Assert.assertFalse(result.isError());
+        Assert.assertSame(13, result.getFields().size());
+        params.setProjectid(1);
+        result = ClientCommunicator.getInstance().getFields(params);
         Assert.assertFalse(result.isError());
         Assert.assertSame(4, result.getFields().size());
     }

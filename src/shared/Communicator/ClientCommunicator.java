@@ -64,8 +64,8 @@ public class ClientCommunicator {
                     f.setKnowndatahtml(URL_PREFIX + "/" + f.getKnowndatahtml());
                 }
             }
+            batch.setImagefilepath(URL_PREFIX+"/"+batch.getImagefilepath());
         }
-        batch.setImagefilepath(URL_PREFIX+"/"+batch.getImagefilepath());
         return result;
     }
 

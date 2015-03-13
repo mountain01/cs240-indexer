@@ -11,6 +11,10 @@ public class GetSampleImage_Params extends Params {
         this.projectId = projectId;
     }
 
+    public GetSampleImage_Params() {
+
+    }
+
     public int getProjectId() {
         return projectId;
     }

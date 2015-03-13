@@ -4,6 +4,10 @@ package shared.Params;
  * Created by Matt on 3/10/2015.
  */
 public class DownloadBatch_Params extends Params{
+    public DownloadBatch_Params() {
+
+    }
+
     public int getProjectid() {
         return projectid;
     }

@@ -124,21 +124,36 @@ public class Controller implements IController {
 	
 	private void getSampleImage() {
         String[] paramValues = getView().getParameterValues();
-        GetSampleImage_Params params = new GetSampleImage_Params(paramValues[0],paramValues[1],Integer.parseInt(paramValues[2]));
+        GetSampleImage_Params params = new GetSampleImage_Params();
+        params.setUsername(paramValues[0]);
+        params.setPassword(paramValues[1]);
+        if(!paramValues[2].equals("")) {
+            params.setProjectId(Integer.parseInt(paramValues[2]));
+        }
         getView().setRequest(new XStream(new DomDriver()).toXML(params));
         getView().setResponse(ClientCommunicator.getInstance().getSampleImage(params).toString());
 	}
 	
 	private void downloadBatch() {
         String[] paramValues = getView().getParameterValues();
-        DownloadBatch_Params params = new DownloadBatch_Params(paramValues[0],paramValues[1],Integer.parseInt(paramValues[2]));
+        DownloadBatch_Params params = new DownloadBatch_Params();
+        params.setUsername(paramValues[0]);
+        params.setPassword(paramValues[1]);
+        if(!paramValues[2].equals("")) {
+            params.setProjectid(Integer.parseInt(paramValues[2]));
+        }
         getView().setRequest(new XStream(new DomDriver()).toXML(params));
         getView().setResponse(ClientCommunicator.getInstance().downloadBatch(params).toString());
 	}
 	
 	private void getFields() {
         String[] paramValues = getView().getParameterValues();
-        GetFields_Params params = new GetFields_Params(paramValues[0],paramValues[1],Integer.parseInt(paramValues[2]));
+        GetFields_Params params = new GetFields_Params();
+        params.setUsername(paramValues[0]);
+        params.setPassword(paramValues[1]);
+        if(!paramValues[2].equals("")) {
+            params.setProjectid(Integer.parseInt(paramValues[2]));
+        }
         getView().setRequest(new XStream(new DomDriver()).toXML(params));
         getView().setResponse(ClientCommunicator.getInstance().getFields(params).toString());
 	}
@@ -148,7 +163,9 @@ public class Controller implements IController {
         SubmitBatch_Params params = new SubmitBatch_Params();
         params.setUsername(paramValues[0]);
         params.setPassword(paramValues[1]);
-        params.setBatchId(Integer.parseInt(paramValues[2]));
+        if(!paramValues[2].equals("")) {
+            params.setBatchId(Integer.parseInt(paramValues[2]));
+        }
         ArrayList<String[]> recordVals = new ArrayList<String[]>();
         String[] records = paramValues[3].split(";");
         for(String valueList:records){

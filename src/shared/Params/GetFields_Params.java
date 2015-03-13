@@ -11,6 +11,10 @@ public class GetFields_Params extends Params {
         this.projectid = projectid;
     }
 
+    public GetFields_Params() {
+
+    }
+
     public int getProjectid() {
         return projectid;
 

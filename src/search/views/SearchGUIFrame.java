@@ -1,19 +1,28 @@
 package search.views;
 
 import server.Models.Project;
+import server.Models.SearchResult;
 import shared.Communicator.ClientCommunicator;
 import shared.Params.GetFields_Params;
 import shared.Params.GetProjects_Params;
+import shared.Params.Search_Params;
 import shared.Params.ValidateUser_Params;
 import shared.Results.GetFields_Result;
 import shared.Results.GetProjects_Result;
+import shared.Results.Search_Result;
 import shared.Results.ValidateUser_Result;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.plaf.DimensionUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -27,6 +36,7 @@ public class SearchGUIFrame extends JFrame {
     private SearchGUIFrame frame = this;
     private ProjectFieldsPanel projPanel;
     private SearchPanel searchPanel;
+    private ImagesPanel imagePanel;
 
     public SearchGUIFrame(){
         super();
@@ -101,16 +111,97 @@ public class SearchGUIFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(searchPanel.getValuesField().length() > 0){
+                    imagePanel.imageList.removeAllItems();
                     doSearch(username,password);
+                } else {
+                    imagePanel.setVisible(false);
                 }
             }
         });
-
+        addImages();
         pack();
         setMinimumSize(getSize());
     }
 
-    private void doSearch(String username,String password){
+    private void addImages() {
+        imagePanel = new ImagesPanel();
+        add(imagePanel);
+        imagePanel.setVisible(false);
+        imagePanel.viewButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InputStream input;
+                try{
+                    String url = (String) imagePanel.imageList.getSelectedItem();
+                    input = new URL(url).openStream();
+                    BufferedImage pic = ImageIO.read(input);
+                    //make frame for image
+                    JFrame f = new JFrame();
+                    f.setTitle(url);
+                    ImageIcon ico = new ImageIcon(pic);
+                    JPanel j = new JPanel();
+                    j.add(new JLabel(ico));
+                    j.revalidate();
+                    f.add(new JScrollPane(j));
+                    f.pack();
+                    f.setVisible(true);
+                    pack();
 
+                } catch (MalformedURLException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+        pack();
+    }
+
+    private void doSearch(String username,String password){
+        ArrayList<String> tempSearchValues = new ArrayList<String>();
+        ArrayList<String> tempFieldIds = new ArrayList<String>();
+        //convert list of search values into array
+        for(String s:searchPanel.getValuesField().split(",")){
+            s = s.trim().toUpperCase();
+            if(!tempSearchValues.contains(s)){
+                tempSearchValues.add(s);
+            }
+        }
+        String[] searchValues = tempSearchValues.toArray(new String[tempSearchValues.size()]);
+        //Get field id's for search
+        int fieldId = 0;
+        for(Component c:projPanel.getComponents()){
+            JCheckBox field = new JCheckBox();
+            if(field.getClass() == c.getClass()){
+                field = (JCheckBox) c;
+                ++fieldId;
+                if(field.isSelected()){
+                    tempFieldIds.add(Integer.toString(fieldId));
+                }
+            }
+        }
+        String[] fieldIds = tempFieldIds.toArray(new String[tempFieldIds.size()]);
+        Search_Params sp = new Search_Params(username,password,searchValues,fieldIds);
+        Search_Result sr = clientComm.search(sp);
+        updateImages(sr.getResults());
+    }
+
+    private void updateImages(ArrayList<SearchResult> results) {
+        if(results.size() >0){
+            ArrayList<String> unique = new ArrayList<String>();
+            for(SearchResult s:results){
+                String word = s.getUrl();
+                if(!unique.contains(word)) {
+                    imagePanel.imageList.addItem(word);
+                    unique.add(word);
+                }
+            }
+            imagePanel.setSize(imagePanel.getPreferredSize());
+            pack();
+            imagePanel.setVisible(true);
+        }else{
+            imagePanel.imageList.removeAllItems();
+            imagePanel.setVisible(false);
+        }
     }
 }

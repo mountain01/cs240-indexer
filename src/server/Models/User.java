@@ -184,4 +184,8 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Object getWelcomeMessage() {
+        return "Welcome " + firstname + " " + lastname + ".\n You have indexed " + recordcount + " records.";
+    }
 }

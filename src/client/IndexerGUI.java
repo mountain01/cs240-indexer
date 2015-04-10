@@ -13,7 +13,7 @@ public class IndexerGUI {
         EventQueue.invokeLater(
                 new Runnable() {
                     public void run() {
-                        userLogInWindow frame = new userLogInWindow();
+                        IndexerFrame frame = new IndexerFrame();
                         frame.setVisible(true);
                     }
                 }

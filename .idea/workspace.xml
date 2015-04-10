@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c97669f-a7fa-4ad7-a5e5-d49a4ff7841d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/userLogInWindow.java" afterPath="$PROJECT_DIR$/src/client/userLogInWindow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/client/IndexMenu.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/client/IndexerButtonBar.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/client/IndexerFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/IndexerGUI.java" afterPath="$PROJECT_DIR$/src/client/IndexerGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cs240-indexer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,49 +29,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SearchGUI.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/search/SearchGUI.java">
+      <file leaf-file-name="IndexerFrame.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/client/IndexerFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-              <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.5302144" vertical-offset="0" max-vertical-offset="646">
+              <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IndexerGUI.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/IndexerGUI.java">
+      <file leaf-file-name="IndexerButtonBar.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/IndexerButtonBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-              <caret line="15" column="68" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="560" max-vertical-offset="1241">
+              <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#554#1008#0" expanded="true" />
+                <element signature="e#1001#1002#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchGUIFrame.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/search/views/SearchGUIFrame.java">
+      <file leaf-file-name="IndexMenu.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/IndexMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="3468">
-              <caret line="49" column="26" selection-start-line="49" selection-start-column="26" selection-end-line="52" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="273" max-vertical-offset="901">
+              <caret line="41" column="49" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="userLogInWindow.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/client/userLogInWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.754" vertical-offset="184" max-vertical-offset="1683">
-              <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2075#2694#0" expanded="true" />
-                <element signature="e#2687#2688#0" expanded="true" />
+                <element signature="e#427#719#0" expanded="true" />
+                <element signature="e#712#713#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,9 +102,13 @@
         <option value="$PROJECT_DIR$/src/search/views/SearchPanel.java" />
         <option value="$PROJECT_DIR$/src/search/views/ImagesPanel.java" />
         <option value="$PROJECT_DIR$/src/search/views/SearchGUIFrame.java" />
-        <option value="$PROJECT_DIR$/src/client/IndexerGUI.java" />
         <option value="$PROJECT_DIR$/src/server/Models/User.java" />
         <option value="$PROJECT_DIR$/src/client/userLogInWindow.java" />
+        <option value="$PROJECT_DIR$/src/client/MenuBar.java" />
+        <option value="$PROJECT_DIR$/src/client/IndexMenu.java" />
+        <option value="$PROJECT_DIR$/src/client/IndexerGUI.java" />
+        <option value="$PROJECT_DIR$/src/client/IndexerButtonBar.java" />
+        <option value="$PROJECT_DIR$/src/client/IndexerFrame.java" />
       </list>
     </option>
   </component>
@@ -489,7 +487,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961586" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24928367" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39900866" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -780,10 +778,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/IndexMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="273" max-vertical-offset="901">
+          <caret line="41" column="49" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#427#719#0" expanded="true" />
+            <element signature="e#712#713#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/IndexerButtonBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="560" max-vertical-offset="1241">
+          <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#554#1008#0" expanded="true" />
+            <element signature="e#1001#1002#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/IndexerGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <caret line="15" column="68" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
+        <state vertical-scroll-proportion="0.6244898" vertical-offset="0" max-vertical-offset="490">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -792,7 +814,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/search/SearchGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+        <state vertical-scroll-proportion="0.43079922" vertical-offset="0" max-vertical-offset="513">
           <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
           <folding />
         </state>
@@ -800,7 +822,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/search/views/SearchGUIFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="3468">
+        <state vertical-scroll-proportion="0.43079922" vertical-offset="612" max-vertical-offset="3468">
           <caret line="49" column="26" selection-start-line="49" selection-start-column="26" selection-end-line="52" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -810,13 +832,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/userLogInWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.754" vertical-offset="184" max-vertical-offset="1683">
-          <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.6354776" vertical-offset="184" max-vertical-offset="1683">
+          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2075#2694#0" expanded="true" />
             <element signature="e#2687#2688#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/IndexerFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5302144" vertical-offset="0" max-vertical-offset="646">
+          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>

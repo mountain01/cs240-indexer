@@ -1,7 +1,5 @@
 package client;
 
-import search.views.SearchGUIFrame;
-
 import java.awt.*;
 
 /**
@@ -13,7 +11,7 @@ public class IndexerGUI {
         EventQueue.invokeLater(
                 new Runnable() {
                     public void run() {
-                        IndexerFrame frame = new IndexerFrame();
+                        IndexerFrame frame = new IndexerFrame(null);
                         frame.setVisible(true);
                     }
                 }

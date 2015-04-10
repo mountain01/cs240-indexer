@@ -1,6 +1,7 @@
 package client;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by Matt on 4/9/2015.
@@ -12,11 +13,10 @@ public class IndexerFrame extends JFrame {
     // button bar
     private IndexerButtonBar buttons;
     // picture spot
+    private ImageViewer imageViewer;
     // bottom section
-        //entry spot
-        // field help/other
 
-     public IndexerFrame (){
+     public IndexerFrame(ImageViewer imageViewwer){
          super("Indexer");
          setSize(1000,700);
          setLocation(500,500);
@@ -27,6 +27,9 @@ public class IndexerFrame extends JFrame {
          setJMenuBar(menuBar);
 
          buttons = new IndexerButtonBar();
-         add(buttons);
+         add(buttons, BorderLayout.NORTH);
+
+         imageViewer = new ImageViewer();
+         add(imageViewer);
      }
 }

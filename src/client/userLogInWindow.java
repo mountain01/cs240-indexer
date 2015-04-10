@@ -24,6 +24,10 @@ public class userLogInWindow extends JFrame {
     public userLogInWindow(){
         super("Login");
         this.setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setMinimumSize(this.getSize());
+        // set position of window
+        setLocation(850,625);
         makeBox();
     }
 

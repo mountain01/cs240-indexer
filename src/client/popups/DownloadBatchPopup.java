@@ -1,12 +1,12 @@
-package client;
+package client.popups;
 
 import server.Models.Project;
 
-import javax.jnlp.DownloadServiceListener;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +23,7 @@ public class DownloadBatchPopup extends JDialog {
 
     public DownloadBatchPopup(JFrame parent, List<Project> projects) {
         super(parent, "Download Batch", JDialog.DEFAULT_MODALITY_TYPE);
+        listeners = new ArrayList<DownloadBatchPopupListener>();
         this.setProjects(projects);
         createComponents();
     }

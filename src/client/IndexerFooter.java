@@ -1,5 +1,9 @@
 package client;
 
+import client.panels.FieldHelpPanel;
+import client.panels.FormEntryPanel;
+import client.panels.ImageNavPanel;
+import client.panels.TableEntryPanel;
 import server.Models.Batch;
 
 import javax.swing.*;

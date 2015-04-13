@@ -1,4 +1,4 @@
-package client;
+package client.popups;
 
 import server.Models.User;
 import shared.Communicator.ClientCommunicator;
@@ -6,10 +6,11 @@ import shared.Params.ValidateUser_Params;
 import shared.Results.ValidateUser_Result;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Matt on 4/8/2015.
@@ -20,9 +21,15 @@ public class userLogInWindow extends JFrame {
     private JButton loginButton;
     private JTextField usernameField;
     private JPasswordField passwordField;
+    private List<LoginListener> listeners;
+
+    public void addListener(LoginListener listener){
+        this.listeners.add(listener);
+    }
 
     public userLogInWindow(){
         super("Login");
+        listeners = new ArrayList<LoginListener>();
         this.setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(this.getSize());
@@ -89,5 +96,12 @@ public class userLogInWindow extends JFrame {
 
     private void displayInfo(User user) {
         JOptionPane.showMessageDialog(this,user.getWelcomeMessage(),"Welcome to Indexer",JOptionPane.PLAIN_MESSAGE);
+        for(LoginListener listener:listeners){
+            listener.login(user);
+        }
+    }
+
+    public interface LoginListener{
+        public void login(User user);
     }
 }

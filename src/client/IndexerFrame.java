@@ -1,5 +1,8 @@
 package client;
 
+import client.menus.IndexMenu;
+import client.menus.IndexerButtonBar;
+
 import javax.swing.*;
 import java.awt.*;
 

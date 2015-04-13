@@ -1,4 +1,4 @@
-package client;
+package client.panels;
 
 import server.Models.Batch;
 import server.Models.Field;

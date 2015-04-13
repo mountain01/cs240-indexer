@@ -1,4 +1,4 @@
-package client;
+package client.panels;
 
 import org.omg.CORBA.INTERNAL;
 import server.Models.Batch;

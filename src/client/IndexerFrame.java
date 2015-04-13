@@ -15,6 +15,7 @@ public class IndexerFrame extends JFrame {
     // picture spot
     private ImageViewer imageViewer;
     // bottom section
+    private IndexerFooter footer;
 
      public IndexerFrame(ImageViewer imageViewwer){
          super("Indexer");
@@ -30,6 +31,10 @@ public class IndexerFrame extends JFrame {
          add(buttons, BorderLayout.NORTH);
 
          imageViewer = new ImageViewer();
-         add(imageViewer);
+
+         footer = new IndexerFooter();
+         JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,imageViewer,footer);
+         splitPane.setDividerLocation(400);
+         this.add(splitPane, BorderLayout.CENTER);
      }
 }

@@ -20,7 +20,7 @@ public class TableEntryPanel extends JPanel {
         super(new BorderLayout());
     }
 
-    private void generateTable(Batch batch){
+    public void setBatch(Batch batch){
         this.fields = batch.getFields();
 
         columnNames = new String[this.fields.size()+1];
@@ -41,5 +41,9 @@ public class TableEntryPanel extends JPanel {
         this.add(table.getTableHeader(), BorderLayout.PAGE_START);
         this.add(table,BorderLayout.CENTER);
 
+    }
+
+    public void removeBatch() {
+        this.removeAll();
     }
 }

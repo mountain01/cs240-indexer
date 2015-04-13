@@ -3,6 +3,17 @@ package client;
 import client.menus.IndexMenu;
 import client.menus.IndexerButtonBar;
 import client.models.IndexerDataModel;
+import client.popups.DownloadBatchPopup;
+import client.popups.ViewSamplePopup;
+import client.popups.userLogInWindow;
+import server.Models.Batch;
+import server.Models.Project;
+import server.Models.User;
+import shared.Communicator.ClientCommunicator;
+import shared.Params.DownloadBatch_Params;
+import shared.Params.GetProjects_Params;
+import shared.Params.GetSampleImage_Params;
+import shared.Results.GetProjects_Result;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +21,7 @@ import java.awt.*;
 /**
  * Created by Matt on 4/9/2015.
  */
-public class IndexerFrame extends JFrame {
+public class IndexerFrame extends JFrame implements userLogInWindow.LoginListener, IndexMenu.IndexMenuListener, DownloadBatchPopup.DownloadBatchPopupListener {
 
     // menu
     private IndexMenu menuBar;
@@ -21,16 +32,21 @@ public class IndexerFrame extends JFrame {
     // bottom section
     private IndexerFooter footer;
     private IndexerDataModel model;
+    private User user;
 
-     public IndexerFrame(ImageViewer imageViewwer){
+     public IndexerFrame() {
          super("Indexer");
-         setSize(1000,700);
-         setLocation(500,500);
+         setSize(1000, 700);
+         setLocation(500, 500);
          setResizable(true);
          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+     }
+
+    private void createComponents(){
 
          menuBar = new IndexMenu();
          setJMenuBar(menuBar);
+        menuBar.addListener(this);
 
          buttons = new IndexerButtonBar();
          add(buttons, BorderLayout.NORTH);
@@ -43,4 +59,64 @@ public class IndexerFrame extends JFrame {
          splitPane.setDividerLocation(400);
          this.add(splitPane, BorderLayout.CENTER);
      }
+
+    public void start(){displayLogin();}
+
+    private void displayLogin() {
+        userLogInWindow login = new userLogInWindow();
+        login.addListener(this);
+        login.setVisible(true);
+    }
+
+    @Override
+    public void login(User user) {
+        this.createComponents();
+        this.setVisible(true);
+        this.user = user;
+    }
+
+    @Override
+    public void exit() {
+        //save state of program
+        System.exit(0);
+    }
+
+    @Override
+    public void logOut() {
+        //save state of program
+        this.setVisible(false);
+        displayLogin();
+    }
+
+    @Override
+    public void requestBatch() {
+        GetProjects_Params gpp = new GetProjects_Params(user.getUsername(),user.getPassword());
+        GetProjects_Result gpr = ClientCommunicator.getInstance().getProjects(gpp);
+        DownloadBatchPopup window = new DownloadBatchPopup(this,gpr.getProjects());
+        window.addListener(this);
+        window.setVisible(true);
+    }
+
+    @Override
+    public void getSampleImage(Project project) {
+        GetSampleImage_Params params = new GetSampleImage_Params();
+        params.setUsername(user.getUsername());
+        params.setPassword(user.getPassword());
+        params.setProjectId(project.getProjectid());
+        String url = ClientCommunicator.getInstance().getSampleImage(params).getUrl();
+        ViewSamplePopup window = new ViewSamplePopup(this,"Sample Image from " + project.getTitle(), url);
+        window.setVisible(true);
+    }
+
+    @Override
+    public void downloadBatch(int projectID) {
+        DownloadBatch_Params params = new DownloadBatch_Params();
+        params.setUsername(user.getUsername());
+        params.setPassword(user.getPassword());
+        params.setProjectid(projectID);
+        Batch batch = ClientCommunicator.getInstance().downloadBatch(params).getBatch();
+        buttons.setEnabled(true);
+        footer.setBatch(batch);
+        imageViewer.setBatch(batch);
+    }
 }

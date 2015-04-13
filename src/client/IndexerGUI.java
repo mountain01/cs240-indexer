@@ -11,8 +11,8 @@ public class IndexerGUI {
         EventQueue.invokeLater(
                 new Runnable() {
                     public void run() {
-                        IndexerFrame frame = new IndexerFrame(null);
-                        frame.setVisible(true);
+                        IndexerFrame frame = new IndexerFrame();
+                        frame.start();
                     }
                 }
         );

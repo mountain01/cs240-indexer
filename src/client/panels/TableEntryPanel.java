@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +26,7 @@ public class TableEntryPanel extends JPanel implements IndexerDataModel.IndexerD
         super(new BorderLayout());
         this.model = model;
         model.addListener(this);
+        this.fields = new ArrayList<Field>();
     }
 
     public void setBatch(Batch batch){

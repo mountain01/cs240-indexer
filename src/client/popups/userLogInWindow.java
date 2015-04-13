@@ -96,6 +96,7 @@ public class userLogInWindow extends JFrame {
 
     private void displayInfo(User user) {
         JOptionPane.showMessageDialog(this,user.getWelcomeMessage(),"Welcome to Indexer",JOptionPane.PLAIN_MESSAGE);
+        this.setVisible(false);
         for(LoginListener listener:listeners){
             listener.login(user);
         }

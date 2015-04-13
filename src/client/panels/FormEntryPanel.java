@@ -5,6 +5,7 @@ import server.Models.Batch;
 import server.Models.Field;
 
 import javax.swing.*;
+import javax.swing.text.html.ObjectView;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -19,6 +20,7 @@ public class FormEntryPanel extends JSplitPane implements IndexerDataModel.Index
     private List<Field> fields;
     private boolean[][] invalid;
     private FormEntryField selected;
+    private Object[][] data;
 
     public FormEntryPanel(IndexerDataModel model){
         super(JSplitPane.HORIZONTAL_SPLIT);
@@ -26,10 +28,13 @@ public class FormEntryPanel extends JSplitPane implements IndexerDataModel.Index
         model.addListener(this);
     }
 
+    public Object[][] getRecordValues(){return data;}
+
     public void setBatch(Batch batch){
         this.fields = batch.getFields();
         Integer[] recordNums = new Integer[this.fields.size()];
         this.invalid = new boolean[batch.getNumRecords()][this.fields.size()];
+        this.data = new String[batch.getNumRecords()][this.fields.size()];
         for(int i = 0;i<this.fields.size();i++){
             recordNums[i] = i+1;
         }

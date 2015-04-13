@@ -1,5 +1,6 @@
 package client.panels;
 
+import client.models.IndexerDataModel;
 import server.Models.Batch;
 
 import javax.imageio.ImageIO;
@@ -12,14 +13,17 @@ import java.net.URL;
 /**
  * Created by Matt on 4/12/2015.
  */
-public class ImageNavPanel extends JPanel {
+public class ImageNavPanel extends JPanel implements IndexerDataModel.IndexerDataListener{
 
+    private IndexerDataModel model;
     private Image image;
     private Image dispImage;
 
-    public ImageNavPanel(){
+    public ImageNavPanel(IndexerDataModel model){
         super();
         this.setBackground(new Color(128, 128, 128));
+        this.model = model;
+        model.addListener(this);
     }
 
     public void setBatch(Batch batch) {
@@ -43,5 +47,15 @@ public class ImageNavPanel extends JPanel {
     public void removeBatch() {
         this.removeAll();
         image = dispImage = null;
+    }
+
+    @Override
+    public void dataChange(int row, int col, String data) {
+
+    }
+
+    @Override
+    public void selectData(int row, int col) {
+
     }
 }

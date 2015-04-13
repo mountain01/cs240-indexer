@@ -106,7 +106,7 @@ public class IndexerButtonBar extends JPanel {
         submitButton.addActionListener(buttonListener);
         this.add(submitButton,BorderLayout.WEST);
 
-        setEnabled(true);
+        setEnabled(false);
     }
 
     public interface ButtonBarListener{

@@ -2,6 +2,7 @@ package client;
 
 import client.menus.IndexMenu;
 import client.menus.IndexerButtonBar;
+import client.models.IndexerDataModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +20,7 @@ public class IndexerFrame extends JFrame {
     private ImageViewer imageViewer;
     // bottom section
     private IndexerFooter footer;
+    private IndexerDataModel model;
 
      public IndexerFrame(ImageViewer imageViewwer){
          super("Indexer");
@@ -35,7 +37,8 @@ public class IndexerFrame extends JFrame {
 
          imageViewer = new ImageViewer();
 
-         footer = new IndexerFooter();
+         model = new IndexerDataModel();
+         footer = new IndexerFooter(model);
          JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,imageViewer,footer);
          splitPane.setDividerLocation(400);
          this.add(splitPane, BorderLayout.CENTER);

@@ -1,5 +1,6 @@
 package client;
 
+import client.models.IndexerDataModel;
 import client.panels.FieldHelpPanel;
 import client.panels.FormEntryPanel;
 import client.panels.ImageNavPanel;
@@ -23,23 +24,23 @@ public class IndexerFooter extends JSplitPane {
         // image nav
     private ImageNavPanel navPanel;
 
-    public IndexerFooter(){
+    public IndexerFooter(IndexerDataModel model){
         super(JSplitPane.HORIZONTAL_SPLIT);
-        generateComponents();
+        generateComponents(model);
     }
 
-    private void generateComponents() {
+    private void generateComponents(IndexerDataModel model) {
         JTabbedPane leftSide = new JTabbedPane();
-        tablePanel = new TableEntryPanel();
+        tablePanel = new TableEntryPanel(model);
         JScrollPane tableScroll = new JScrollPane(tablePanel);
-        formPanel = new FormEntryPanel();
+        formPanel = new FormEntryPanel(model);
         leftSide.addTab("Table Entry",tableScroll);
         leftSide.addTab("Form Entry",formPanel);
 
         JTabbedPane rightSide = new JTabbedPane();
-        helpPanel = new FieldHelpPanel();
+        helpPanel = new FieldHelpPanel(model);
         JScrollPane helpScroll = new JScrollPane(helpPanel);
-        navPanel = new ImageNavPanel();
+        navPanel = new ImageNavPanel(model);
         rightSide.addTab("Field Help",helpScroll);
         rightSide.addTab("Image Navigation", navPanel);
 

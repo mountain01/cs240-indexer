@@ -1,5 +1,6 @@
 package client.panels;
 
+import client.models.IndexerDataModel;
 import server.Models.Batch;
 import server.Models.Field;
 
@@ -9,13 +10,16 @@ import java.util.List;
 /**
  * Created by Matt on 4/12/2015.
  */
-public class FieldHelpPanel extends JEditorPane {
+public class FieldHelpPanel extends JEditorPane implements IndexerDataModel.IndexerDataListener {
 
+    private IndexerDataModel model;
     List<Field> fields;
 
-    public FieldHelpPanel(){
+    public FieldHelpPanel(IndexerDataModel model){
         super();
         this.setContentType("text/html");
+        this.model = model;
+        model.addListener(this);
     }
 
     public void setBatch(Batch batch){
@@ -26,5 +30,15 @@ public class FieldHelpPanel extends JEditorPane {
         fields = null;
         this.removeAll();
         this.setText("");
+    }
+
+    @Override
+    public void dataChange(int row, int col, String data) {
+
+    }
+
+    @Override
+    public void selectData(int row, int col) {
+
     }
 }

@@ -1,23 +1,29 @@
 package client.panels;
 
-import org.omg.CORBA.INTERNAL;
+import client.models.IndexerDataModel;
 import server.Models.Batch;
 import server.Models.Field;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.List;
 
 /**
  * Created by Matt on 4/10/2015.
  */
-public class FormEntryPanel extends JSplitPane{
+public class FormEntryPanel extends JSplitPane implements IndexerDataModel.IndexerDataListener{
+    private IndexerDataModel model;
     private JList<Integer> list;
     private List<Field> fields;
     private boolean[][] invalid;
+    private FormEntryField selected;
 
-    public FormEntryPanel(){
+    public FormEntryPanel(IndexerDataModel model){
         super(JSplitPane.HORIZONTAL_SPLIT);
+        this.model = model;
+        model.addListener(this);
     }
 
     public void setBatch(Batch batch){
@@ -41,17 +47,40 @@ public class FormEntryPanel extends JSplitPane{
             JLabel fieldNameLabel = new JLabel(fieldName);
             formPanel.add(fieldNameLabel);
             FormEntryField input = new FormEntryField(fieldNameLabel,i,field.getKnowndatahtml());
+            input.addFocusListener(focusListener);
             formPanel.add(input);
         }
         JScrollPane formScroll = new JScrollPane(formPanel);
         this.setRightComponent(formScroll);
         this.setDividerLocation(30);
-
-
     }
+
+    private FocusListener focusListener = new FocusListener() {
+        @Override
+        public void focusGained(FocusEvent e) {
+            selected = (FormEntryField) e.getSource();
+            model.selectCell(list.getSelectedIndex(),selected.getIndex());
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+            FormEntryField input = (FormEntryField) e.getSource();
+            model.dataChange(list.getSelectedIndex(), input.getIndex(),input.getText());
+        }
+    };
 
     public void removeBatch() {
         this.removeAll();
+    }
+
+    @Override
+    public void dataChange(int row, int col, String data) {
+
+    }
+
+    @Override
+    public void selectData(int row, int col) {
+
     }
 
     private class FormEntryField extends JTextField{

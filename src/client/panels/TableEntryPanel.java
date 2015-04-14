@@ -59,7 +59,7 @@ public class TableEntryPanel extends JPanel implements IndexerDataModel.IndexerD
             TableColumn column = columnModel.getColumn(i);
             column.setCellRenderer(renderer);
         }
-
+        columnModel.getSelectionModel().addListSelectionListener(selectionListener);
 
         this.add(table.getTableHeader(), BorderLayout.PAGE_START);
         this.add(table,BorderLayout.CENTER);

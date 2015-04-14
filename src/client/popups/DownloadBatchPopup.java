@@ -26,6 +26,7 @@ public class DownloadBatchPopup extends JDialog {
         listeners = new ArrayList<DownloadBatchPopupListener>();
         this.setProjects(projects);
         createComponents();
+        setResizable(false);
     }
 
     public void addListener(DownloadBatchPopupListener listener){

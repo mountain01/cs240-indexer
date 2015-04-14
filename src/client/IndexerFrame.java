@@ -102,6 +102,8 @@ public class IndexerFrame extends JFrame implements userLogInWindow.LoginListene
         DownloadBatchPopup window = new DownloadBatchPopup(this,gpr.getProjects());
         window.addListener(this);
         window.setVisible(true);
+        menuBar.setHasBatch(true);
+        this.hasBatch = true;
     }
 
     @Override

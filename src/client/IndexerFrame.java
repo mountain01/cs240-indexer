@@ -110,8 +110,6 @@ public class IndexerFrame extends JFrame implements userLogInWindow.LoginListene
         DownloadBatchPopup window = new DownloadBatchPopup(this,gpr.getProjects());
         window.addListener(this);
         window.setVisible(true);
-        menuBar.setHasBatch(true);
-        this.hasBatch = true;
     }
 
     @Override
@@ -135,6 +133,8 @@ public class IndexerFrame extends JFrame implements userLogInWindow.LoginListene
         buttons.setEnabled(true);
         footer.setBatch(batch);
         imageViewer.setBatch(batch);
+        menuBar.setHasBatch(true);
+        this.hasBatch = true;
     }
 
     @Override

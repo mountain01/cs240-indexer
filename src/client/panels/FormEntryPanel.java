@@ -103,6 +103,8 @@ public class FormEntryPanel extends JSplitPane implements IndexerDataModel.Index
     @Override
     public void dataChange(int row, int col, String data) {
         this.data[row][col] = data;
+        qCheck.fieldChange(this.fields.get(col).getKnowndatahtml());
+        qCheck.isInvalidEntry(row,col,data);
         updateFields();
     }
 

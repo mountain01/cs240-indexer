@@ -48,8 +48,8 @@ public class QualityCheckModel {
 
     public void isInvalidEntry(int row, int col, String word){
         if(dictionary != null && hasKnownData){
-            for(QualityCheckerListener l:listeners){
-                l.setInvalid(row,col,dictionary.contains(word));
+            for(QualityCheckerListener l:qualityListeners){
+                l.setInvalid(row,col,!dictionary.contains(word));
             }
         }
     }
@@ -127,38 +127,37 @@ public class QualityCheckModel {
         private Node root = new Node();
         public Node searchNode;
 
-        public String getSearchValue(){
-            return searchNode.word;
-        }
-        public void add(String word){root.add(word.toLowerCase());}
+        public void add(String word){root.add(word.trim().toLowerCase());}
 
         public boolean contains(String word){
-            searchNode = root.contains(word.toLowerCase());
+            searchNode = root.contains(word.trim().toLowerCase());
             return searchNode != null;
         }
     }
 
     private class Node {
 
-        private Node[] children = new Node[26];
-        private String word;
+        private Node[] children = new Node[27];
 
         public void add(String s) {
             Node temp = this;
             for (char c : s.toLowerCase().toCharArray()) {
-                int index = c -'a';
+                int index = c == ' ' ? 26 : c - 'a';
+                if (index < 0 || index > children.length)
+                    return;
                 if (temp.children[index] == null) {
                     temp.children[index] = new Node();
                 }
                 temp = temp.children[index];
             }
-            temp.word = (s.toLowerCase());
         }
 
         public Node contains(String s) {
             Node temp = this;
             for(char c : s.toLowerCase().toCharArray()){
-                int index = c-'a';
+                int index = c == ' ' ? 26 : c - 'a';
+                if (index < 0 || index > children.length)
+                    return null;
                 if(temp.children[index] != null){
                     temp = temp.children[index];
                 } else {

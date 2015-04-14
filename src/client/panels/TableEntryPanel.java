@@ -142,6 +142,8 @@ public class TableEntryPanel extends JPanel implements IndexerDataModel.IndexerD
     @Override
     public void dataChange(int row, int col, String data) {
         tableInfo[row][col+1] = data;
+        qCheck.fieldChange(this.fields.get(col).getKnowndatahtml());
+        qCheck.isInvalidEntry(row,col,data);
     }
 
     @Override

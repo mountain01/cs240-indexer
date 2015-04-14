@@ -5,6 +5,7 @@ import client.menus.IndexerButtonBar;
 import client.models.IndexerDataModel;
 import client.models.QualityCheckModel;
 import client.popups.DownloadBatchPopup;
+import client.popups.SeeSuggestionsPopup;
 import client.popups.ViewSamplePopup;
 import client.popups.userLogInWindow;
 import server.Models.Batch;
@@ -189,6 +190,7 @@ public class IndexerFrame extends JFrame implements userLogInWindow.LoginListene
 
     @Override
     public void seeSuggestions(int row, int col, List<String> similar) {
-
+        SeeSuggestionsPopup window = new SeeSuggestionsPopup(this, similar, row, col, model);
+        window.setVisible(true);
     }
 }

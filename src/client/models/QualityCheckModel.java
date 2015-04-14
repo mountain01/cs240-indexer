@@ -54,12 +54,16 @@ public class QualityCheckModel {
         }
     }
 
-    public List<String> getSuggestions(int row, int col, String knownData, String word){
+    public void getSuggestions(int row, int col, String knownData, String word){
         dictionary = tries.get(knownData);
         word = word.toLowerCase();
         Set<String> possiblities = getEditWords(word);
         possiblities = getAllEditWords(possiblities);
-        return getValidWords(possiblities);
+        List<String> ret = new ArrayList<String>();
+        ret.addAll(getValidWords(possiblities));
+        for(SeeSuggestionsListener l:suggestionsListeners){
+            l.seeSuggestions(row,col,ret);
+        }
     }
 
     private ArrayList<String> getValidWords(Set<String> possiblities) {

@@ -65,6 +65,7 @@ public class ImageViewer extends JPanel implements IndexerDataModel.IndexerDataL
         model.addListener(this);
         highlight = new Highlight();
         this.addMouseWheelListener(mouseListener);
+        highlighted = true;
     }
 
     public void setBatch(Batch batch) {

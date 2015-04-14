@@ -10,8 +10,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.text.html.ObjectView;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,6 +94,25 @@ public class FormEntryPanel extends JSplitPane implements IndexerDataModel.Index
             updateFields();
         }
     };
+    private MouseAdapter mouseAdapter = new MouseAdapter(){
+        public void mouseClicked (MouseEvent e) {
+            if(e.getModifiers() == MouseEvent.BUTTON3_MASK){
+                final int row = list.getSelectedIndex();
+                final int col = ((FormEntryField) e.getComponent()).getIndex();
+                final String knownData = ((FormEntryField) e.getComponent()).getKnownDataUrl();
+                JPopupMenu popup = new JPopupMenu();
+                JMenuItem menuItem = new JMenuItem("See Suggestions");
+                menuItem.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        qCheck.getSuggestions(row,col,knownData,(String) data[row][col]);
+                    }
+                });
+                popup.add(menuItem);
+                popup.show(e.getComponent(),e.getX(), e.getY());
+            }
+        }
+    };
 
     public void removeBatch() {
         this.removeAll();
@@ -119,16 +137,16 @@ public class FormEntryPanel extends JSplitPane implements IndexerDataModel.Index
         for(FormEntryField input : inputs){
             int row = list.getSelectedIndex();
             int col = input.getIndex();
-            String value = (String) data[list.getSelectedIndex()][input.getIndex()];
+            String value = (String) data[row][col];
             if(data != null)
                 input.setText(value);
             if(invalid[list.getSelectedIndex()][input.getIndex()]) {
                 input.setBackground(new Color(0xFF0000));
-                //input.addMouseListener(mouseAdapter);
+                input.addMouseListener(mouseAdapter);
             }else{
                 input.setBackground(Color.WHITE);
-//                if(input.getMouseListeners().length > 0)
-                    //input.removeMouseListener(mouseAdapter);
+                if(input.getMouseListeners().length > 0)
+                    input.removeMouseListener(mouseAdapter);
             }
         }
     }

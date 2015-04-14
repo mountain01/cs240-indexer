@@ -10,6 +10,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +55,7 @@ public class TableEntryPanel extends JPanel implements IndexerDataModel.IndexerD
         }
 
         table = new JTable(tableInfo,columnNames);
+        table.addMouseListener(mouseAdapter);
 
         table.setCellSelectionEnabled(true);
         table.setModel(tableModel);
@@ -131,6 +136,28 @@ public class TableEntryPanel extends JPanel implements IndexerDataModel.IndexerD
         public void valueChanged(ListSelectionEvent e) {
             if(!e.getValueIsAdjusting()){
                 model.selectCell(table.getSelectedRow(),table.getSelectedColumn()-1);
+            }
+        }
+    };
+
+    private MouseAdapter mouseAdapter = new MouseAdapter(){
+        public void mouseClicked (MouseEvent e) {
+            final int row = table.rowAtPoint(e.getPoint());
+            final int col = table.columnAtPoint(e.getPoint());
+            if(e.getButton() == MouseEvent.BUTTON3 && invalid[row][col]){
+                final String knownData = fields.get(col-1).getKnowndatahtml();
+                JPopupMenu popup = new JPopupMenu();
+                JMenuItem menuItem = new JMenuItem("See Suggestions");
+                menuItem.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        qCheck.getSuggestions(row,col-1,knownData,(String) tableInfo[row][col]);
+                    }
+                });
+                popup.add(menuItem);
+                popup.show(e.getComponent(), e.getX(), e.getY());
+            }else if(e.getButton() == MouseEvent.BUTTON1){
+                model.selectCell(row,col-1);
             }
         }
     };

@@ -57,6 +57,12 @@ public class IndexMenu extends JMenuBar {
         menu.add(downloadBatchMenuItem);
         menu.add(logoutMenuItem);
         menu.add(exitMenuItem);
+
+        setHasBatch(false);
+    }
+
+    public void setHasBatch(boolean hasBatch){
+        downloadBatchMenuItem.setEnabled(!hasBatch);
     }
 
     public interface IndexMenuListener{

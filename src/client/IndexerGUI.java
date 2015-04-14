@@ -1,5 +1,7 @@
 package client;
 
+import shared.Communicator.ClientCommunicator;
+
 import java.awt.*;
 
 /**
@@ -8,13 +10,10 @@ import java.awt.*;
 public class IndexerGUI {
 
     public static void main(String[] args) {
-        EventQueue.invokeLater(
-                new Runnable() {
-                    public void run() {
-                        IndexerFrame frame = new IndexerFrame();
-                        frame.start();
-                    }
-                }
-        );
+        String host = args[0];
+        int port = Integer.parseInt(args[1]);
+        ClientCommunicator.getInstance().initialize(host,port);
+        IndexerFrame frame = new IndexerFrame();
+        frame.start();
     }
 }

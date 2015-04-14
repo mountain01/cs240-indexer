@@ -33,6 +33,7 @@ public class IndexerFrame extends JFrame implements userLogInWindow.LoginListene
     private IndexerFooter footer;
     private IndexerDataModel model;
     private User user;
+    private boolean hasBatch;
 
      public IndexerFrame() {
          super("Indexer");
@@ -40,6 +41,7 @@ public class IndexerFrame extends JFrame implements userLogInWindow.LoginListene
          setLocation(500, 500);
          setResizable(true);
          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         hasBatch = false;
      }
 
     private void createComponents(){
@@ -75,6 +77,9 @@ public class IndexerFrame extends JFrame implements userLogInWindow.LoginListene
         this.createComponents();
         this.setVisible(true);
         this.user = user;
+
+        // if no current batch
+        hasBatch = true;
     }
 
     @Override

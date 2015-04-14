@@ -31,6 +31,11 @@ public class ClientCommunicator {
         URL_PREFIX = "http://" + SERVER_HOST + ":" + SERVER_PORT;
     }
 
+    public void initialize(String host,int port){
+        setHost(host);
+        setPort(port);
+    }
+
     private  int SERVER_PORT = 8080;
     private String URL_PREFIX = "http://" + SERVER_HOST + ":" + SERVER_PORT;
     private static final String HTTP_GET = "GET";

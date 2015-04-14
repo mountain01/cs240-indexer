@@ -5,6 +5,8 @@ import server.Models.Batch;
 import server.Models.Field;
 
 import javax.swing.*;
+import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -39,6 +41,12 @@ public class FieldHelpPanel extends JEditorPane implements IndexerDataModel.Inde
 
     @Override
     public void selectData(int row, int col) {
-
+        if(col >= 0){
+            try {
+                this.setPage(new URL(fields.get(col).getHelphtml()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

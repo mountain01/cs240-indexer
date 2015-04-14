@@ -145,14 +145,14 @@ public class QualityCheckModel {
         public void add(String word){root.add(word.trim().toLowerCase());}
 
         public boolean contains(String word){
-            searchNode = root.contains(word.trim().toLowerCase());
-            return searchNode != null;
+            return root.contains(word.trim().toLowerCase());
         }
     }
 
     private class Node {
 
         private Node[] children = new Node[27];
+        private boolean valid = false;
 
         public void add(String s) {
             Node temp = this;
@@ -165,21 +165,23 @@ public class QualityCheckModel {
                 }
                 temp = temp.children[index];
             }
+            temp.valid = true;
+
         }
 
-        public Node contains(String s) {
+        public boolean contains(String s) {
             Node temp = this;
             for(char c : s.toLowerCase().toCharArray()){
                 int index = c == ' ' ? 26 : c - 'a';
                 if (index < 0 || index > children.length)
-                    return null;
+                    return false;
                 if(temp.children[index] != null){
                     temp = temp.children[index];
                 } else {
-                    return null;
+                    return false;
                 }
             }
-            return temp;
+            return temp.valid;
         }
     }
 

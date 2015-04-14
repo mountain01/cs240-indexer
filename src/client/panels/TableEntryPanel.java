@@ -1,6 +1,7 @@
 package client.panels;
 
 import client.models.IndexerDataModel;
+import client.models.QualityCheckModel;
 import server.Models.Batch;
 import server.Models.Field;
 
@@ -15,18 +16,21 @@ import java.util.List;
 /**
  * Created by Matt on 4/10/2015.
  */
-public class TableEntryPanel extends JPanel implements IndexerDataModel.IndexerDataListener{
+public class TableEntryPanel extends JPanel implements IndexerDataModel.IndexerDataListener, QualityCheckModel.QualityCheckerListener {
     private String[] columnNames;
     private List<Field> fields;
     private Object[][] tableInfo;
     private boolean[][] invalid;
     private IndexerDataModel model;
     private JTable table;
+    private QualityCheckModel qCheck;
 
-    public TableEntryPanel(IndexerDataModel model){
+    public TableEntryPanel(IndexerDataModel model, QualityCheckModel qCheck){
         super(new BorderLayout());
         this.model = model;
+        this.qCheck = qCheck;
         model.addListener(this);
+        qCheck.addListener(this);
         this.fields = new ArrayList<Field>();
     }
 
@@ -143,5 +147,11 @@ public class TableEntryPanel extends JPanel implements IndexerDataModel.IndexerD
     @Override
     public void selectData(int row, int col) {
         table.changeSelection(row,col+1,false,false);
+    }
+
+    @Override
+    public void setInvalid(int row, int col, boolean invalid) {
+        this.invalid[row][col+1] = invalid;
+        table.repaint();
     }
 }

@@ -1,6 +1,7 @@
 package client;
 
 import client.models.IndexerDataModel;
+import client.models.QualityCheckModel;
 import client.panels.FieldHelpPanel;
 import client.panels.FormEntryPanel;
 import client.panels.ImageNavPanel;
@@ -24,16 +25,16 @@ public class IndexerFooter extends JSplitPane {
         // image nav
     private ImageNavPanel navPanel;
 
-    public IndexerFooter(IndexerDataModel model){
+    public IndexerFooter(IndexerDataModel model, QualityCheckModel qCheck){
         super(JSplitPane.HORIZONTAL_SPLIT);
-        generateComponents(model);
+        generateComponents(model,qCheck);
     }
 
-    private void generateComponents(IndexerDataModel model) {
+    private void generateComponents(IndexerDataModel model, QualityCheckModel qCheck) {
         JTabbedPane leftSide = new JTabbedPane();
-        tablePanel = new TableEntryPanel(model);
+        tablePanel = new TableEntryPanel(model,qCheck);
         JScrollPane tableScroll = new JScrollPane(tablePanel);
-        formPanel = new FormEntryPanel(model);
+        formPanel = new FormEntryPanel(model,qCheck);
         leftSide.addTab("Table Entry",tableScroll);
         leftSide.addTab("Form Entry",formPanel);
 

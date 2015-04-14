@@ -1,6 +1,7 @@
 package client.panels;
 
 import client.models.IndexerDataModel;
+import client.models.QualityCheckModel;
 import server.Models.Batch;
 import server.Models.Field;
 
@@ -17,7 +18,7 @@ import java.util.List;
 /**
  * Created by Matt on 4/10/2015.
  */
-public class FormEntryPanel extends JSplitPane implements IndexerDataModel.IndexerDataListener{
+public class FormEntryPanel extends JSplitPane implements IndexerDataModel.IndexerDataListener, QualityCheckModel.QualityCheckerListener {
     private IndexerDataModel model;
     private JList<Integer> list;
     private List<Field> fields;
@@ -25,10 +26,13 @@ public class FormEntryPanel extends JSplitPane implements IndexerDataModel.Index
     private FormEntryField selected;
     private Object[][] data;
     private List<FormEntryField> inputs;
+    private QualityCheckModel qCheck;
 
-    public FormEntryPanel(IndexerDataModel model){
+    public FormEntryPanel(IndexerDataModel model, QualityCheckModel qCheck){
         super(JSplitPane.HORIZONTAL_SPLIT);
         this.model = model;
+        this.qCheck = qCheck;
+        qCheck.addListener(this);
         model.addListener(this);
         inputs = new ArrayList<FormEntryField>();
     }
@@ -125,6 +129,11 @@ public class FormEntryPanel extends JSplitPane implements IndexerDataModel.Index
                     //input.removeMouseListener(mouseAdapter);
             }
         }
+    }
+
+    @Override
+    public void setInvalid(int row, int col, boolean invalid) {
+        this.invalid[row][col] = invalid;
     }
 
     private class FormEntryField extends JTextField{

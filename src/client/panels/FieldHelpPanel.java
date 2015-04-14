@@ -1,6 +1,7 @@
 package client.panels;
 
 import client.models.IndexerDataModel;
+import client.models.QualityCheckModel;
 import server.Models.Batch;
 import server.Models.Field;
 

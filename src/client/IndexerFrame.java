@@ -3,6 +3,7 @@ package client;
 import client.menus.IndexMenu;
 import client.menus.IndexerButtonBar;
 import client.models.IndexerDataModel;
+import client.models.QualityCheckModel;
 import client.popups.DownloadBatchPopup;
 import client.popups.ViewSamplePopup;
 import client.popups.userLogInWindow;
@@ -25,7 +26,7 @@ import java.util.List;
 /**
  * Created by Matt on 4/9/2015.
  */
-public class IndexerFrame extends JFrame implements userLogInWindow.LoginListener, IndexMenu.IndexMenuListener, DownloadBatchPopup.DownloadBatchPopupListener, IndexerButtonBar.ButtonBarListener {
+public class IndexerFrame extends JFrame implements userLogInWindow.LoginListener, IndexMenu.IndexMenuListener, DownloadBatchPopup.DownloadBatchPopupListener, IndexerButtonBar.ButtonBarListener, QualityCheckModel.SeeSuggestionsListener{
 
     // menu
     private IndexMenu menuBar;
@@ -36,6 +37,7 @@ public class IndexerFrame extends JFrame implements userLogInWindow.LoginListene
     // bottom section
     private IndexerFooter footer;
     private IndexerDataModel model;
+    private QualityCheckModel qCheck;
     private User user;
     private boolean hasBatch;
 
@@ -59,10 +61,12 @@ public class IndexerFrame extends JFrame implements userLogInWindow.LoginListene
         buttons.addListener(this);
 
         model = new IndexerDataModel();
+        qCheck = new QualityCheckModel();
+        qCheck.addListener(this);
 
          imageViewer = new ImageViewer(model);
 
-         footer = new IndexerFooter(model);
+         footer = new IndexerFooter(model,qCheck);
          JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,imageViewer,footer);
          splitPane.setDividerLocation(400);
          this.add(splitPane, BorderLayout.CENTER);
@@ -181,5 +185,10 @@ public class IndexerFrame extends JFrame implements userLogInWindow.LoginListene
             buttons.setEnabled(false);
             menuBar.setHasBatch(hasBatch);
         }
+    }
+
+    @Override
+    public void seeSuggestions(int row, int col, List<String> similar) {
+
     }
 }

@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c97669f-a7fa-4ad7-a5e5-d49a4ff7841d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/shared/Communicator/ClientCommunicator.java" afterPath="$PROJECT_DIR$/src/shared/Communicator/ClientCommunicator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/panels/FieldHelpPanel.java" afterPath="$PROJECT_DIR$/src/client/panels/FieldHelpPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/menus/IndexMenu.java" afterPath="$PROJECT_DIR$/src/client/menus/IndexMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/ImageViewer.java" afterPath="$PROJECT_DIR$/src/client/ImageViewer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Database/Indexer.sqlite" afterPath="$PROJECT_DIR$/Database/Indexer.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/IndexerFrame.java" afterPath="$PROJECT_DIR$/src/client/IndexerFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/IndexerGUI.java" afterPath="$PROJECT_DIR$/src/client/IndexerGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cs240-indexer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,10 +27,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="IndexerGUI.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="IndexerGUI.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/IndexerGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52918285" vertical-offset="0" max-vertical-offset="514">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
               <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -64,14 +61,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageViewer.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ImageViewer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/ImageViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="858" max-vertical-offset="3723">
-              <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.3307393" vertical-offset="0" max-vertical-offset="3706">
+              <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -121,7 +116,6 @@
         <option value="$PROJECT_DIR$/src/client/popups/userLogInWindow.java" />
         <option value="$PROJECT_DIR$/src/client/panels/FormEntryPanel.java" />
         <option value="$PROJECT_DIR$/src/client/popups/ViewSamplePopup.java" />
-        <option value="$PROJECT_DIR$/src/client/ImageViewer.java" />
         <option value="$PROJECT_DIR$/src/client/panels/TableEntryPanel.java" />
         <option value="$PROJECT_DIR$/src/client/models/IndexerDataModel.java" />
         <option value="$PROJECT_DIR$/src/client/panels/FieldHelpPanel.java" />
@@ -129,6 +123,7 @@
         <option value="$PROJECT_DIR$/src/client/IndexerFrame.java" />
         <option value="$PROJECT_DIR$/src/shared/Communicator/ClientCommunicator.java" />
         <option value="$PROJECT_DIR$/src/client/IndexerGUI.java" />
+        <option value="$PROJECT_DIR$/src/client/ImageViewer.java" />
       </list>
     </option>
   </component>
@@ -670,18 +665,6 @@
           <properties />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/client/ImageViewer.java</url>
-          <line>147</line>
-          <properties />
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/client/ImageViewer.java</url>
-          <line>139</line>
-          <properties />
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
       </breakpoints>
       <option name="time" value="37" />
     </breakpoint-manager>
@@ -1118,16 +1101,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/ImageViewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="858" max-vertical-offset="3723">
-          <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/shared/Communicator/ClientCommunicator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3383">
@@ -1138,11 +1111,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/IndexerGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52918285" vertical-offset="0" max-vertical-offset="514">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
           <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/ImageViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3307393" vertical-offset="0" max-vertical-offset="3706">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>

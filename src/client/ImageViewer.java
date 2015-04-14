@@ -9,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.RescaleOp;
@@ -170,7 +169,7 @@ public class ImageViewer extends JPanel implements IndexerDataModel.IndexerDataL
         @Override
         public void mouseWheelMoved(MouseWheelEvent e) {
             super.mouseWheelMoved(e);
-            if(e.getWheelRotation() > 0) {
+            if(e.getPreciseWheelRotation() > 0) {
                 zoomIn();
             } else {
                 zoomOut();

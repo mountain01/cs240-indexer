@@ -18,12 +18,16 @@ public class IndexerDataModel {
     }
 
     public void selectCell(int row, int col){
+        if(row < 0 || col < 0)
+            return;
         for(IndexerDataListener listener:listeners){
             listener.selectData(row, col);
         }
     }
 
     public void dataChange(int row, int col, String data){
+        if(row < 0 || col < 0)
+            return;
         for(IndexerDataListener listener:listeners){
             listener.dataChange(row, col,data);
         }

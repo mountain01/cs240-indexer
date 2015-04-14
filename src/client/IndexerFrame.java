@@ -21,7 +21,7 @@ import java.awt.*;
 /**
  * Created by Matt on 4/9/2015.
  */
-public class IndexerFrame extends JFrame implements userLogInWindow.LoginListener, IndexMenu.IndexMenuListener, DownloadBatchPopup.DownloadBatchPopupListener {
+public class IndexerFrame extends JFrame implements userLogInWindow.LoginListener, IndexMenu.IndexMenuListener, DownloadBatchPopup.DownloadBatchPopupListener, IndexerButtonBar.ButtonBarListener {
 
     // menu
     private IndexMenu menuBar;
@@ -50,10 +50,12 @@ public class IndexerFrame extends JFrame implements userLogInWindow.LoginListene
 
          buttons = new IndexerButtonBar();
          add(buttons, BorderLayout.NORTH);
+        buttons.addListener(this);
 
-         imageViewer = new ImageViewer();
+        model = new IndexerDataModel();
 
-         model = new IndexerDataModel();
+         imageViewer = new ImageViewer(model);
+
          footer = new IndexerFooter(model);
          JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,imageViewer,footer);
          splitPane.setDividerLocation(400);
@@ -118,5 +120,35 @@ public class IndexerFrame extends JFrame implements userLogInWindow.LoginListene
         buttons.setEnabled(true);
         footer.setBatch(batch);
         imageViewer.setBatch(batch);
+    }
+
+    @Override
+    public void zoomIn() {
+        imageViewer.zoomIn();
+    }
+
+    @Override
+    public void zoomOut() {
+        imageViewer.zoomOut();
+    }
+
+    @Override
+    public void invertImage() {
+        imageViewer.invert();
+    }
+
+    @Override
+    public void toggleHighlight() {
+        imageViewer.highlight();
+    }
+
+    @Override
+    public void save() {
+
+    }
+
+    @Override
+    public void submit() {
+
     }
 }

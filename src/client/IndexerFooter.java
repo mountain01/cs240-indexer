@@ -62,4 +62,8 @@ public class IndexerFooter extends JSplitPane {
         helpPanel.removeBatch();
         navPanel.removeBatch();
     }
+
+    public Object[][] getRecordValues(){
+        return formPanel.getRecordValues();
+    }
 }

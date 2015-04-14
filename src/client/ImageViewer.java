@@ -55,6 +55,8 @@ public class ImageViewer extends JPanel implements IndexerDataModel.IndexerDataL
         return scale;
     }
 
+    public Batch getBatch(){return batch;}
+
     public ImageViewer(IndexerDataModel model){
         super(new FlowLayout(FlowLayout.CENTER));
         this.scale = .5;
@@ -76,6 +78,12 @@ public class ImageViewer extends JPanel implements IndexerDataModel.IndexerDataL
         }catch(IOException e){
             e.printStackTrace();
         }
+    }
+
+    public void removeBatch(){
+        this.removeAll();
+        dispImage = null;
+        this.paintAll(this.getGraphics());
     }
 
     public void zoomIn(){

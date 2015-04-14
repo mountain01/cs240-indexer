@@ -13,10 +13,14 @@ import shared.Communicator.ClientCommunicator;
 import shared.Params.DownloadBatch_Params;
 import shared.Params.GetProjects_Params;
 import shared.Params.GetSampleImage_Params;
+import shared.Params.SubmitBatch_Params;
 import shared.Results.GetProjects_Result;
+import shared.Results.SubmitBatch_Result;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Matt on 4/9/2015.
@@ -156,6 +160,26 @@ public class IndexerFrame extends JFrame implements userLogInWindow.LoginListene
 
     @Override
     public void submit() {
-
+        SubmitBatch_Params params = new SubmitBatch_Params();
+        params.setUsername(user.getUsername());
+        params.setPassword(user.getPassword());
+        ArrayList<String[]> values = new ArrayList<String[]>();
+        for(Object[] record:footer.getRecordValues()){
+            values.add((String[]) record);
+        }
+        params.setFieldValues(values);
+        params.setBatchId(imageViewer.getBatch().getBatchid());
+        SubmitBatch_Result result = ClientCommunicator.getInstance().submitBatch(params);
+        if(result.isError()){
+            JOptionPane.showMessageDialog(this,
+                    "There was an error submitting your batch",
+                    "Submit Batch Failed",JOptionPane.ERROR_MESSAGE);
+        } else {
+            hasBatch = false;
+            imageViewer.removeBatch();
+            footer.removeBatch();
+            buttons.setEnabled(false);
+            menuBar.setHasBatch(hasBatch);
+        }
     }
 }

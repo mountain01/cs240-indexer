@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c97669f-a7fa-4ad7-a5e5-d49a4ff7841d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/popups/DownloadBatchPopup.java" afterPath="$PROJECT_DIR$/src/client/popups/DownloadBatchPopup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/panels/FormEntryPanel.java" afterPath="$PROJECT_DIR$/src/client/panels/FormEntryPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Database/Indexer.sqlite" afterPath="$PROJECT_DIR$/Database/Indexer.sqlite" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/ImageViewer.java" afterPath="$PROJECT_DIR$/src/client/ImageViewer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/IndexerFooter.java" afterPath="$PROJECT_DIR$/src/client/IndexerFooter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/IndexerFrame.java" afterPath="$PROJECT_DIR$/src/client/IndexerFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/panels/TableEntryPanel.java" afterPath="$PROJECT_DIR$/src/client/panels/TableEntryPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cs240-indexer.iws" />
@@ -30,6 +28,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="IndexerFooter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/IndexerFooter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="717" max-vertical-offset="1275">
+              <caret line="66" column="15" selection-start-line="66" selection-start-column="15" selection-end-line="66" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1972#1973#0" expanded="true" />
+                <element signature="e#2022#2023#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="IndexerGUI.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/IndexerGUI.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -42,13 +54,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IndexerFrame.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/IndexerFrame.java">
+      <file leaf-file-name="ImageViewer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/ImageViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1057" max-vertical-offset="2703">
-              <caret line="105" column="29" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="872" max-vertical-offset="3842">
+              <caret line="86" column="5" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndexerFrame.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/client/IndexerFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.8574423" vertical-offset="2532" max-vertical-offset="3111">
+              <caret line="181" column="40" selection-start-line="181" selection-start-column="40" selection-end-line="181" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4789#4799#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,18 +86,6 @@
               <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Batch.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/Models/Batch.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="438" max-vertical-offset="2414">
-              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-              <folding>
-                <element signature="e#984#985#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -114,22 +127,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageViewer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/ImageViewer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3706">
-              <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormEntryPanel.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FormEntryPanel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/panels/FormEntryPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4562118" vertical-offset="881" max-vertical-offset="2465">
+            <state vertical-scroll-proportion="0.0" vertical-offset="881" max-vertical-offset="2465">
               <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
               <folding>
                 <element signature="e#2409#2728#0" expanded="true" />
@@ -192,7 +193,6 @@
         <option value="$PROJECT_DIR$/src/client/IndexerButtonBar.java" />
         <option value="$PROJECT_DIR$/src/client/menus/IndexerButtonBar.java" />
         <option value="$PROJECT_DIR$/src/client/models/IndexerDataListener.java" />
-        <option value="$PROJECT_DIR$/src/client/IndexerFooter.java" />
         <option value="$PROJECT_DIR$/src/client/panels/ImageNavPanel.java" />
         <option value="$PROJECT_DIR$/src/client/popups/userLogInWindow.java" />
         <option value="$PROJECT_DIR$/src/client/popups/ViewSamplePopup.java" />
@@ -201,12 +201,13 @@
         <option value="$PROJECT_DIR$/src/client/menus/IndexMenu.java" />
         <option value="$PROJECT_DIR$/src/shared/Communicator/ClientCommunicator.java" />
         <option value="$PROJECT_DIR$/src/client/IndexerGUI.java" />
-        <option value="$PROJECT_DIR$/src/client/ImageViewer.java" />
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/src/client/panels/TableEntryPanel.java" />
         <option value="$PROJECT_DIR$/src/client/popups/DownloadBatchPopup.java" />
-        <option value="$PROJECT_DIR$/src/client/IndexerFrame.java" />
         <option value="$PROJECT_DIR$/src/client/panels/FormEntryPanel.java" />
+        <option value="$PROJECT_DIR$/src/client/IndexerFooter.java" />
+        <option value="$PROJECT_DIR$/src/client/ImageViewer.java" />
+        <option value="$PROJECT_DIR$/src/client/IndexerFrame.java" />
       </list>
     </option>
   </component>
@@ -718,10 +719,10 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961586" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32961586" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16260745" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45600992" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3283767" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32961586" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961586" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961586" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -731,7 +732,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24928367" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3283767" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283767" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1023,16 +1024,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/IndexerFooter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="747" max-vertical-offset="1207">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/server/Importer/Importer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2856">
@@ -1106,16 +1097,6 @@
         <state vertical-scroll-proportion="0.764" vertical-offset="2525" max-vertical-offset="3502">
           <caret line="171" column="60" selection-start-line="171" selection-start-column="60" selection-end-line="171" selection-end-column="60" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/ImageViewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3706">
-          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1197,25 +1178,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/IndexerFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1057" max-vertical-offset="2703">
-          <caret line="105" column="29" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/panels/FormEntryPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4562118" vertical-offset="881" max-vertical-offset="2465">
+        <state vertical-scroll-proportion="0.0" vertical-offset="881" max-vertical-offset="2465">
           <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
           <folding>
             <element signature="e#2409#2728#0" expanded="true" />
             <element signature="e#2721#2722#0" expanded="true" />
             <element signature="e#4511#4512#0" expanded="true" />
             <element signature="e#4547#4548#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/IndexerFooter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="717" max-vertical-offset="1275">
+          <caret line="66" column="15" selection-start-line="66" selection-start-column="15" selection-end-line="66" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1972#1973#0" expanded="true" />
+            <element signature="e#2022#2023#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/ImageViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="872" max-vertical-offset="3842">
+          <caret line="86" column="5" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/IndexerFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8574423" vertical-offset="2532" max-vertical-offset="3111">
+          <caret line="181" column="40" selection-start-line="181" selection-start-column="40" selection-end-line="181" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4789#4799#0" expanded="true" />
           </folding>
         </state>
       </provider>

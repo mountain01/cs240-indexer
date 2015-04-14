@@ -61,16 +61,27 @@ public class QualityCheckModel {
         possiblities = getAllEditWords(possiblities);
         List<String> ret = new ArrayList<String>();
         ret.addAll(getValidWords(possiblities));
+        Collections.sort(ret);
         for(SeeSuggestionsListener l:suggestionsListeners){
             l.seeSuggestions(row,col,ret);
         }
+    }
+    public ArrayList<String> getSuggestions(String word, String knownData){
+        dictionary = tries.get(knownData);
+        word = word.toLowerCase();
+        Set<String> possiblities = getEditWords(word);
+        possiblities = getAllEditWords(possiblities);
+        ArrayList<String> ret = new ArrayList<String>();
+        ret.addAll(getValidWords(possiblities));
+        Collections.sort(ret);
+        return ret;
     }
 
     private ArrayList<String> getValidWords(Set<String> possiblities) {
         Set<String> list = new HashSet<String>();
         ArrayList<String> retList = new ArrayList<String>();
         for(String s:possiblities){
-            if(dictionary.contains(s)){
+            if(dictionary.contains(s) && !s.equals("")){
                 list.add(s);
             }
         }
@@ -110,10 +121,10 @@ public class QualityCheckModel {
         for(int j = 0;j<26;j++){
             char c = (char) ('a' + j);
             for(int i = 0;i<inputWord.length();i++) {
-                list.add(inputWord.substring(0, i) + c + inputWord.substring(i + ins));
+                list.add((inputWord.substring(0, i) + c + inputWord.substring(i + ins)).trim());
             }
             if(ins == 0){
-                list.add(inputWord + c);
+                list.add((inputWord + c).trim());
             }
         }
         return list;

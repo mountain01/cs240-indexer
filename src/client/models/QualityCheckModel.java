@@ -151,13 +151,13 @@ public class QualityCheckModel {
 
     private class Node {
 
-        private Node[] children = new Node[27];
+        private Node[] children = new Node[28];
         private boolean valid = false;
 
         public void add(String s) {
             Node temp = this;
             for (char c : s.toLowerCase().toCharArray()) {
-                int index = c == ' ' ? 26 : c - 'a';
+                int index = c == ' ' ? 26 : c=='-'?27:c - 'a';
                 if (index < 0 || index > children.length)
                     return;
                 if (temp.children[index] == null) {
@@ -172,7 +172,7 @@ public class QualityCheckModel {
         public boolean contains(String s) {
             Node temp = this;
             for(char c : s.toLowerCase().toCharArray()){
-                int index = c == ' ' ? 26 : c - 'a';
+                int index = c == ' ' ? 26 : c=='-'?27:c - 'a';
                 if (index < 0 || index > children.length)
                     return false;
                 if(temp.children[index] != null){
